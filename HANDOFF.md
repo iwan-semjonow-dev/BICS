@@ -65,6 +65,9 @@ GitHub is synchronized with `origin/main`.
 - Added a mobile breakpoint at `600px`.
 - Reduced page and section padding on small screens.
 - Reduced heading sizes on small screens.
+- Reduced `category-card` spacing on small screens.
+- Reduced `category-card` padding on small screens.
+- Reduced transaction list indentation on small screens.
 - CSS remains simple and beginner-friendly.
 
 ## Important Decisions

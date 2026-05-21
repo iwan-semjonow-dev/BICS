@@ -131,4 +131,13 @@ h3 {
     h3 {
         font-size: 18px;
     }
+
+    .category-card {
+        margin-bottom: 16px;
+        padding: 14px;
+    }
+
+    .transactions-section ul {
+        padding-left: 18px;
+    }
 }
