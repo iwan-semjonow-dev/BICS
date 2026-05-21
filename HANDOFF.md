@@ -45,7 +45,14 @@ Already done:
 - replaced broad CSS selectors with more precise class-based selectors for category cards;
 - added `transactions-section` to the example transactions section;
 - replaced broad list selectors with more precise transaction-section selectors;
-- the user practiced choosing selectors by element role and context.
+- the user practiced choosing selectors by element role and context;
+- added `summary-section` to the first content section;
+- the current main sections now have clear role-based class names:
+  - `summary-section`
+  - `categories-section`
+  - `transactions-section`
+- class names describe the role of each block, not its visual style;
+- the HTML structure became cleaner and easier to understand.
 
 ## Agreed First MVP
 
@@ -138,9 +145,10 @@ A new person should understand within one minute:
 
 ## Next Steps
 
-1. Review whether the main structural sections now have clear class names.
-2. Continue with one small visual improvement at a time.
-3. Keep CSS selectors precise, but avoid unnecessary complexity.
+1. Review the current section structure after adding role-based class names.
+2. Continue with one small visual CSS improvement.
+3. Keep using simple class names based on meaning, not appearance.
+4. Later decide whether to add more dashboard sections again, such as expenses structure, recurring expenses, and goals.
 
 ## Recommended Next Prompt
 
@@ -164,6 +172,7 @@ Requirements:
 - no extra features
 
 Work as a teacher and explain the HTML structure simply.
+
 
 
 
