@@ -18,6 +18,7 @@ h1 {
     margin-bottom: 8px;
     margin-top: 0;
     line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
 header p {
@@ -60,6 +61,7 @@ h2 {
     font-size: 24px;
     margin-bottom: 16px;
     line-height: 1.2;
+    letter-spacing: -0.01em;
 }
 
 .category-card {

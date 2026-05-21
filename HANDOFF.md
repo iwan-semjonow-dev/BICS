@@ -71,6 +71,7 @@ GitHub is synchronized with `origin/main`.
 - Softened section shadow.
 - Added a subtle border to sections.
 - Slightly deepened `category-card` background contrast.
+- Slightly tightened letter spacing for `h1` and `h2`.
 - CSS remains simple and beginner-friendly.
 
 ## Important Decisions
