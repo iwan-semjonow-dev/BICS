@@ -96,6 +96,28 @@ Instead:
 4. Re-discover the current skill path if possible.
 5. Wait for my decision before continuing without the skill.
 
+## Git rules
+
+Codex may run git status freely.
+
+Codex must not run git add, git commit, git push, rebase, reset, or force push without my explicit confirmation.
+
+Before any commit:
+
+1. Run git status.
+2. Explain which files changed.
+3. Explain what changed.
+4. Suggest a commit message.
+5. Wait for my approval.
+
+Before any push:
+
+1. Explain what will be pushed.
+2. Wait for my explicit approval.
+3. Run git push only after approval.
+
+Never run force push unless I explicitly request it and confirm the risk.
+
 ## Technical Rules
 
 - Пока используем только HTML, CSS и JavaScript.
