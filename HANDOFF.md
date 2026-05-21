@@ -56,6 +56,9 @@ GitHub is synchronized with `origin/main`.
 - Softened example text in `category-card`.
 - Softened paragraph text in `summary-section`.
 - Styled transaction list markers with a softer color.
+- Tightened spacing below the header.
+- Unified section spacing with a `24px` rhythm.
+- Increased spacing between `category-card` blocks.
 - CSS remains simple and beginner-friendly.
 
 ## Important Decisions

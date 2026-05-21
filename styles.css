@@ -10,7 +10,7 @@ body {
 
 header {
     max-width: 900px;
-    margin: 0 auto 32px;
+    margin: 0 auto 24px;
 }
 
 h1 {
@@ -28,7 +28,7 @@ header p {
 }
 
 section {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
     background-color: #fff;
     padding: 24px;
     border-radius: 12px;
@@ -61,7 +61,7 @@ h2 {
 }
 
 .category-card {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     background-color: #fafafa;
     padding: 16px;
     border-radius: 8px;
