@@ -36,6 +36,10 @@ GitHub is synchronized with `origin/main`.
   - `summary-section`
   - `categories-section`
   - `transactions-section`
+- Visible UI text in `index.html` was translated to English.
+- `html lang` was changed to `en`.
+- Russian HTML comments are allowed for learning support according to `AGENTS.md` language rules.
+- Class names and HTML structure were not changed.
 
 ## CSS Already Done
 
