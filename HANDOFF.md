@@ -90,8 +90,11 @@ GitHub is synchronized with `origin/main`.
 
 - GitHub: synchronized with `origin/main`.
 - Working tree: clean at the last checkpoint.
-- JavaScript: not started yet.
+- JavaScript: started with data only; DOM is not started yet.
 - `script.js` now contains a minimal `transactions` array with 4 objects and outputs it to the console only; no DOM changes yet.
+- Transaction `title` and `reason` values in `script.js` were translated to English.
+- BICS categories remain exact: `Basic`, `Invest`, `Chaos`, `Signal`.
+- Russian comments are allowed for learning support according to `AGENTS.md` language rules.
 - No technical blockers currently known.
 
 ## First JavaScript plan

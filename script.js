@@ -1,25 +1,25 @@
 const transactions = [
     {
-        title: "Аренда квартиры",
-        reason: "Обязательные базовые расходы",
+        title: "Apartment rent", // "Аренда квартиры"
+        reason: "Essential basic expense", // "Обязательные базовые расходы"
         category: "Basic"
     },
 
     {
-        title: "Курс по JavaScript",
-        reason: "Вложение в развитие",
+        title: "JavaScript course", // "Курс по JavaScript"
+        reason: "Investment in personal development", // "Вложение в развитие"
         category: "Invest"
     },
 
     {
-        title: "Спонтанная доставка еды",
-        reason: "Импульсивные и незапланированные траты",
+        title: "Spontaneous food delivery", // "Спонтанная доставка еды"
+        reason: "Impulsive and unplanned spending", // "Импульсивные и незапланированные траты"
         category: "Chaos"
     },
 
     {
-        title: "Дорогие часы",
-        reason: "Покупки для статуса, образа и самопрезентации",
+        title: "Expensive watch", // "Дорогие часы"
+        reason: "Purchase for status, image, and self-presentation", // "Покупки для статуса, образа и самопрезентации"
         category: "Signal"
     }
 ];
