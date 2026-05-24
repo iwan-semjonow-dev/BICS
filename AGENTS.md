@@ -9,6 +9,32 @@
   - CSS
   - JavaScript
 
+## Language rules
+
+The BICS user interface should be written in English.
+
+Use English for:
+- visible HTML text;
+- transaction titles;
+- transaction reasons;
+- section names;
+- labels;
+- buttons;
+- category descriptions.
+
+Keep BICS category names exactly:
+- Basic
+- Invest
+- Chaos
+- Signal
+
+Russian is allowed for:
+- code comments;
+- teaching explanations;
+- learning notes for the user.
+
+Do not mix Russian UI text with English UI text unless I explicitly ask.
+
 ## Teaching Mode
 
 Я новичок в программировании.
