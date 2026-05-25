@@ -44,3 +44,35 @@ BICS — это одностраничное веб-приложение для 
 - цели и сбережения;
 - постоянные расходы;
 - сложный дизайн.
+
+## Future product vision
+
+In the future, BICS can grow into a dashboard-style web application for understanding personal financial energy and spending behavior.
+
+The mockup in `assets/mockups/bics-future-dashboard.jpg` shows the long-term visual direction of the product. It is a visual reference, not the current development task.
+
+The future dashboard may include:
+
+- header with the BICS title and subtitle;
+- date range selector;
+- period selector;
+- summary cards for balance, income, expenses, investments, and financial energy;
+- main BICS circle with the four behavioral categories: `Basic`, `Invest`, `Chaos`, and `Signal`;
+- financial energy score;
+- expense structure with regular spending categories, percentages, and amounts;
+- transactions list;
+- recurring expenses;
+- goals and savings;
+- quick add form;
+- charts;
+- filters;
+- reports.
+
+Important distinction:
+
+- BICS categories describe the behavioral reason behind spending: `Basic`, `Invest`, `Chaos`, `Signal`.
+- Expense categories describe the practical type of spending, such as food, transport, subscriptions, health, or rent.
+
+Current development still happens through small learning steps. The project should first build strong JavaScript fundamentals: data, arrays, objects, loops, conditions, functions, and console-based logic.
+
+The full dashboard should not be built until the JavaScript foundations are ready.
