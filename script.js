@@ -56,14 +56,17 @@ console.log("Searching category: " + targetCategory);
 
 let count = 0;
 let totalAmount = 0;
+let categoryTotal = 0;
 
 for (let i = 0; i < transactions.length; i++) {
     if (transactions[i].category === targetCategory) {
         console.log(transactions[i].title + " - " + transactions[i].category);
         count = count + 1;
+        categoryTotal = categoryTotal + transactions[i].amount;
     }
 
     totalAmount = totalAmount + transactions[i].amount;
 }
 console.log("Found: " + count);
 console.log("Total amount: " + totalAmount);
+console.log("Category total: " + categoryTotal);

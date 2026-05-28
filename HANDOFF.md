@@ -139,6 +139,7 @@ GitHub is synchronized with `origin/main`.
 - Russian comments are allowed for learning support according to `AGENTS.md` language rules.
 - JavaScript Step 2 completed: reading transactions from the array, using indexes, variables, loop, category filter, and count output in console.
 - JavaScript amount checkpoint completed: each transaction now has numeric `amount` data, amount values are read in the console, and `totalAmount` is calculated and displayed with console output.
+- JavaScript sum by category checkpoint completed: `categoryTotal` now calculates the total `amount` for one `targetCategory` using a loop and `if` condition, while `totalAmount` still calculates the total amount across all transactions.
 - No DOM, HTML, or CSS changes yet.
 - No technical blockers currently known.
 
