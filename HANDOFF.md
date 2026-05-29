@@ -143,6 +143,8 @@ GitHub is synchronized with `origin/main`.
 - JavaScript expenseCategory checkpoint completed: each transaction now has a future practical `expenseCategory` layer, and `targetExpenseCategory` is used to find transactions by practical spending type in the console.
 - JavaScript expenseCategory total checkpoint completed: `expenseCategoryTotal` now calculates the total `amount` for one `targetExpenseCategory` using a loop and `if` condition.
 - This prepares the future expense structure section from the dashboard mockup.
+- Current `script.js` was reviewed top-to-bottom with the user: transaction data, reading fields, filters, counters, totals, `categoryTotal`, and `expenseCategoryTotal` were explained and checked with control questions.
+- User correctly answered the control questions for the current `script.js` logic.
 - BICS `category` still remains the behavioral layer: `Basic`, `Invest`, `Chaos`, `Signal`.
 - No DOM, HTML, or CSS changes yet.
 - No technical blockers currently known.
