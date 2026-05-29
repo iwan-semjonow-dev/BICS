@@ -3,28 +3,32 @@ const transactions = [
         title: "Apartment rent", // "Аренда квартиры"
         reason: "Essential basic expense", // "Обязательные базовые расходы"
         category: "Basic",
-        amount: 800
+        amount: 800,
+        expenseCategory: "housing"
     },
 
     {
         title: "JavaScript course", // "Курс по JavaScript"
         reason: "Investment in personal development", // "Вложение в развитие"
         category: "Invest",
-        amount: 400
+        amount: 400,
+        expenseCategory: "education"
     },
 
     {
         title: "Spontaneous food delivery", // "Спонтанная доставка еды"
         reason: "Impulsive and unplanned spending", // "Импульсивные и незапланированные траты"
         category: "Chaos",
-        amount: 30
+        amount: 30,
+        expenseCategory: "food"
     },
 
     {
         title: "Expensive watch", // "Дорогие часы"
         reason: "Purchase for status, image, and self-presentation", // "Покупки для статуса, образа и самопрезентации"
         category: "Signal",
-        amount: 5000
+        amount: 5000,
+        expenseCategory: "accessories"
     }
 ];
 
@@ -70,3 +74,15 @@ for (let i = 0; i < transactions.length; i++) {
 console.log("Found: " + count);
 console.log("Total amount: " + totalAmount);
 console.log("Category total: " + categoryTotal);
+
+console.log(firstTransaction.expenseCategory);
+console.log(lastTransaction.expenseCategory);
+
+const targetExpenseCategory = "housing";
+console.log("Searching expense category: " + targetExpenseCategory);
+
+for (let i = 0; i < transactions.length; i++) {
+    if (transactions[i].expenseCategory === targetExpenseCategory) {
+        console.log(transactions[i].title + " - " + transactions[i].expenseCategory);
+    }
+}
