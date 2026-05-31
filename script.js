@@ -103,6 +103,18 @@ function sumByCategory(transactions, targetCategory) {
 const basicTotal = sumByCategory(transactions, "Basic");
 console.log(basicTotal);
 
+const investTotal = sumByCategory(transactions, "Invest");
+console.log(investTotal);
+
+const chaosTotal = sumByCategory(transactions, "Chaos");
+console.log(chaosTotal);
+
+const signalTotal = sumByCategory(transactions, "Signal");
+console.log(signalTotal);
+
+
+
+
 function sumByExpenseCategory(transactions, targetExpenseCategory) {
     let total = 0;
     for (let i = 0; i < transactions.length; i++) {

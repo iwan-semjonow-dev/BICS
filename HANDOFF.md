@@ -151,6 +151,9 @@ GitHub is synchronized with `origin/main`.
 - The universal function approach was intentionally postponed to keep the code easier to understand.
 - JavaScript function return values checkpoint completed: returned values from `sumByCategory` and `sumByExpenseCategory` are now saved into variables such as `basicTotal` and `housingTotal` before being printed with `console.log`.
 - This confirms the difference between returning a value and printing a value.
+- JavaScript function reuse checkpoint completed: `sumByCategory` is now reused with different BICS category arguments: `Basic`, `Invest`, `Chaos`, and `Signal`.
+- Returned values are saved into separate variables for each BICS category.
+- This prepares future percentage calculations and dashboard summary logic.
 - BICS `category` still remains the behavioral layer: `Basic`, `Invest`, `Chaos`, `Signal`.
 - No DOM, HTML, or CSS changes yet.
 - No technical blockers currently known.
