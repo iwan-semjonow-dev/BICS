@@ -161,6 +161,9 @@ GitHub is synchronized with `origin/main`.
 - This prepares future BICS circle, percentage display, and dashboard summary logic.
 - JavaScript comments checkpoint completed: beginner-friendly Russian block comments were added to `script.js` to explain the main data, reading, calculation, filtering, function, percentage, and expense total blocks.
 - Comments explain the purpose of each block for BICS and do not change JavaScript logic.
+- HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
+- Comments explain the purpose of each section for BICS and do not change HTML structure.
+- No CSS, JavaScript logic, or DOM changes were made.
 - BICS `category` still remains the behavioral layer: `Basic`, `Invest`, `Chaos`, `Signal`.
 - No DOM, HTML, or CSS changes yet.
 - No technical blockers currently known.
