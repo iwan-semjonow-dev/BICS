@@ -105,30 +105,70 @@ function sumByCategory(transactions, targetCategory) {
     return total;
 }
 
+function calculatePercentage(categoryTotal, totalAmount) {
+    return categoryTotal / totalAmount * 100;
+}
+
 // Переиспользуем sumByCategory для всех BICS-категорий, считаем проценты и форматируем вывод для console
 const basicTotal = sumByCategory(transactions, "Basic");
 console.log(basicTotal);
 
-const basicPercentage = basicTotal / totalAmount * 100;
+const basicPercentage = calculatePercentage(basicTotal, totalAmount);
 console.log("Basic percentage: " + basicPercentage.toFixed(2) + "%");
+
+const basicStats = {
+    category: "Basic",
+    total: basicTotal,
+    percentage: basicPercentage
+};
+console.log(basicStats);
+
+console.log(basicStats.category + ": " + basicStats.total + " total, " + basicStats.percentage.toFixed(2) + "% of all spending");
 
 const investTotal = sumByCategory(transactions, "Invest");
 console.log(investTotal);
 
-const investPercentage = investTotal / totalAmount * 100;
+const investPercentage = calculatePercentage(investTotal, totalAmount);
 console.log("Invest percentage: " + investPercentage.toFixed(2) + "%");
+
+const investStats = {
+    category: "Invest",
+    total: investTotal,
+    percentage: investPercentage
+};
+console.log(investStats);
+
+console.log(investStats.category + ": " + investStats.total + " total, " + investStats.percentage.toFixed(2) + "% of all spending");
 
 const chaosTotal = sumByCategory(transactions, "Chaos");
 console.log(chaosTotal);
 
-const chaosPercentage = chaosTotal / totalAmount * 100;
+const chaosPercentage = calculatePercentage(chaosTotal, totalAmount);
 console.log("Chaos percentage: " + chaosPercentage.toFixed(2) + "%");
+
+const chaosStats = {
+    category: "Chaos",
+    total: chaosTotal,
+    percentage: chaosPercentage
+};
+console.log(chaosStats);
+
+console.log(chaosStats.category + ": " + chaosStats.total + " total, " + chaosStats.percentage.toFixed(2) + "% of all spending");
 
 const signalTotal = sumByCategory(transactions, "Signal");
 console.log(signalTotal);
 
-const signalPercentage = signalTotal / totalAmount * 100;
+const signalPercentage = calculatePercentage(signalTotal, totalAmount);
 console.log("Signal percentage: " + signalPercentage.toFixed(2) + "%");
+
+const signalStats = {
+    category: "Signal",
+    total: signalTotal,
+    percentage: signalPercentage
+};
+console.log(signalStats);
+
+console.log(signalStats.category + ": " + signalStats.total + " total, " + signalStats.percentage.toFixed(2) + "% of all spending");
 
 // Считаем сумму по expenseCategory: это слой "на что ушли деньги", а не BICS-причина покупки
 function sumByExpenseCategory(transactions, targetExpenseCategory) {
@@ -145,14 +185,26 @@ function sumByExpenseCategory(transactions, targetExpenseCategory) {
 const housingTotal = sumByExpenseCategory(transactions, "housing");
 console.log(housingTotal);
 
+const housingPercentage = calculatePercentage(housingTotal, totalAmount);
+console.log("Housing percentage: " + housingPercentage.toFixed(2) + "%");
+
 const educationTotal = sumByExpenseCategory(transactions, "education");
 console.log(educationTotal);
+
+const educationPercentage = calculatePercentage(educationTotal, totalAmount);
+console.log("Education percentage: " + educationPercentage.toFixed(2) + "%");
 
 const foodTotal = sumByExpenseCategory(transactions, "food");
 console.log(foodTotal);
 
+const foodPercentage = calculatePercentage(foodTotal, totalAmount);
+console.log("Food percentage: " + foodPercentage.toFixed(2) + "%");
+
 const accessoriesTotal = sumByExpenseCategory(transactions, "accessories");
 console.log(accessoriesTotal);
+
+const accessoriesPercentage = calculatePercentage(accessoriesTotal, totalAmount);
+console.log("Accessories percentage: " + accessoriesPercentage.toFixed(2) + "%");
 
 
 

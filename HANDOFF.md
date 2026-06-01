@@ -156,9 +156,15 @@ GitHub is synchronized with `origin/main`.
 - This prepares future percentage calculations and dashboard summary logic.
 - JavaScript expense function reuse checkpoint completed: `sumByExpenseCategory` is now reused with different practical expense category arguments such as `food` and `education`.
 - This reinforces the difference between BICS behavioral `category` and practical `expenseCategory`.
-- JavaScript percentage checkpoint completed: `basicPercentage` now calculates the Basic share of `totalAmount` using `basicTotal / totalAmount * 100`.
+- JavaScript percentage checkpoint completed: `basicPercentage` first calculated the Basic share of `totalAmount` using `basicTotal / totalAmount * 100`.
 - The difference between numeric calculation values and formatted display strings was explained: `basicPercentage` remains a number, while `toFixed(2) + "%"` is used only for readable console output.
 - This prepares future BICS circle, percentage display, and dashboard summary logic.
+- JavaScript reusable percentage function checkpoint completed: `calculatePercentage(categoryTotal, totalAmount)` now calculates a percentage from any part/total pair.
+- `calculatePercentage` is reused for all BICS category percentages: `basicPercentage`, `investPercentage`, `chaosPercentage`, and `signalPercentage`.
+- `calculatePercentage` is also reused for practical expense category percentages: `housingPercentage`, `educationPercentage`, `foodPercentage`, and `accessoriesPercentage`.
+- JavaScript stats object checkpoint completed: `basicStats`, `investStats`, `chaosStats`, and `signalStats` now keep related BICS data together: `category`, `total`, and `percentage`.
+- JavaScript object reading checkpoint completed: each BICS stats object is read with dot notation to print a clear console summary, such as category name, total, and percentage of all spending.
+- The next proposed `printStatsSummary` function checkpoint has not started yet.
 - JavaScript comments checkpoint completed: beginner-friendly Russian block comments were added to `script.js` to explain the main data, reading, calculation, filtering, function, percentage, and expense total blocks.
 - Comments explain the purpose of each block for BICS and do not change JavaScript logic.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
