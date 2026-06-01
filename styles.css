@@ -1,7 +1,9 @@
+/* Делаем расчёт размеров элементов более предсказуемым */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+/* Общий визуальный фундамент страницы BICS: шрифт, фон, отступы и базовая читаемость */
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -12,11 +14,13 @@ body {
     line-height: 1.5;
 }
 
+/* Верхний блок выравнивается по ширине основного контента и отделяется от следующих секций */
 header {
     max-width: 900px;
     margin: 0 auto 24px;
 }
 
+/* Делаем название BICS главным акцентом, а подпись под ним — спокойнее */
 h1 {
     font-size: 32px;
     margin-bottom: 8px;
@@ -32,6 +36,7 @@ header p {
     line-height: 1.3;
 }
 
+/* Оформляем смысловые секции BICS как карточки с отступами, рамкой и мягкой тенью */
 section {
     margin-bottom: 24px;
     background-color: #fff;
@@ -45,11 +50,13 @@ section:last-child {
     margin-bottom: 0;
 }
 
+/* Центрируем основной контент BICS и ограничиваем его ширину для удобного чтения */
 main {
     max-width: 900px;
     margin: 0 auto;
 }
 
+/* Улучшаем читаемость вводного текста BICS: ограничиваем ширину и добавляем отступы */
 .summary-section p {
     margin: 0 0 12px;
     color: #444;
@@ -60,6 +67,7 @@ main {
     margin-bottom: 0;
 }
 
+/* Заголовки секций заметны, но остаются ниже по иерархии, чем главный заголовок BICS */
 h2 {
     margin-top: 0;
     font-size: 24px;
@@ -68,6 +76,7 @@ h2 {
     letter-spacing: -0.01em;
 }
 
+/* Визуально отделяем каждую BICS-категорию как отдельную карточку */
 .category-card {
     margin-bottom: 20px;
     background-color: #f8f8f8;
@@ -80,6 +89,7 @@ h2 {
     margin-bottom: 0;
 }
 
+/* Внутри карточек выделяем название категории и делаем описание спокойнее */
 h3 {
     margin-bottom: 8px;
     margin-top: 0;
@@ -98,6 +108,7 @@ h3 {
     color: #666;
 }
 
+/* Оформляем список примеров транзакций так, чтобы связь покупки с BICS-категорией читалась быстро */
 .transactions-section ul {
     margin-top: 0;
     margin-bottom: 0;
@@ -119,6 +130,7 @@ h3 {
     color: #888;
 }
 
+/* Адаптируем страницу BICS для маленьких экранов: уменьшаем отступы и размеры заголовков */
 @media (max-width: 600px) {
     body {
         padding: 16px;

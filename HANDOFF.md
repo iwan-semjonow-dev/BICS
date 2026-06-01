@@ -164,6 +164,9 @@ GitHub is synchronized with `origin/main`.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
 - Comments explain the purpose of each section for BICS and do not change HTML structure.
 - No CSS, JavaScript logic, or DOM changes were made.
+- CSS comments checkpoint completed: beginner-friendly Russian block comments were added to `styles.css` for the main visual blocks: box sizing, page foundation, header, typography hierarchy, section cards, main layout, summary text, category cards, transaction list, and mobile adaptation.
+- Comments explain the visual purpose of each block for BICS and do not change CSS behavior.
+- No HTML structure, JavaScript logic, or DOM changes were made.
 - BICS `category` still remains the behavioral layer: `Basic`, `Invest`, `Chaos`, `Signal`.
 - No DOM, HTML, or CSS changes yet.
 - No technical blockers currently known.
