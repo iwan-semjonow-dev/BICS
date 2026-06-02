@@ -164,7 +164,10 @@ GitHub is synchronized with `origin/main`.
 - `calculatePercentage` is also reused for practical expense category percentages: `housingPercentage`, `educationPercentage`, `foodPercentage`, and `accessoriesPercentage`.
 - JavaScript stats object checkpoint completed: `basicStats`, `investStats`, `chaosStats`, and `signalStats` now keep related BICS data together: `category`, `total`, and `percentage`.
 - JavaScript object reading checkpoint completed: each BICS stats object is read with dot notation to print a clear console summary, such as category name, total, and percentage of all spending.
-- The next proposed `printStatsSummary` function checkpoint has not started yet.
+- JavaScript `printStatsSummary` checkpoint completed: `printStatsSummary(stats)` now reads `category`, `total`, and `percentage` from one stats object and prints a clear console summary.
+- `printStatsSummary` is manually reused for all four BICS stats objects: `basicStats`, `investStats`, `chaosStats`, and `signalStats`.
+- Old manual summary `console.log` lines for each BICS stats object were removed, so the summary format now lives in one function.
+- Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript comments checkpoint completed: beginner-friendly Russian block comments were added to `script.js` to explain the main data, reading, calculation, filtering, function, percentage, and expense total blocks.
 - Comments explain the purpose of each block for BICS and do not change JavaScript logic.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.

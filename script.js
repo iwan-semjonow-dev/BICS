@@ -110,6 +110,7 @@ function calculatePercentage(categoryTotal, totalAmount) {
 }
 
 // Переиспользуем sumByCategory для всех BICS-категорий, считаем проценты и форматируем вывод для console
+
 const basicTotal = sumByCategory(transactions, "Basic");
 console.log(basicTotal);
 
@@ -122,8 +123,6 @@ const basicStats = {
     percentage: basicPercentage
 };
 console.log(basicStats);
-
-console.log(basicStats.category + ": " + basicStats.total + " total, " + basicStats.percentage.toFixed(2) + "% of all spending");
 
 const investTotal = sumByCategory(transactions, "Invest");
 console.log(investTotal);
@@ -138,8 +137,6 @@ const investStats = {
 };
 console.log(investStats);
 
-console.log(investStats.category + ": " + investStats.total + " total, " + investStats.percentage.toFixed(2) + "% of all spending");
-
 const chaosTotal = sumByCategory(transactions, "Chaos");
 console.log(chaosTotal);
 
@@ -152,8 +149,6 @@ const chaosStats = {
     percentage: chaosPercentage
 };
 console.log(chaosStats);
-
-console.log(chaosStats.category + ": " + chaosStats.total + " total, " + chaosStats.percentage.toFixed(2) + "% of all spending");
 
 const signalTotal = sumByCategory(transactions, "Signal");
 console.log(signalTotal);
@@ -168,7 +163,13 @@ const signalStats = {
 };
 console.log(signalStats);
 
-console.log(signalStats.category + ": " + signalStats.total + " total, " + signalStats.percentage.toFixed(2) + "% of all spending");
+function printStatsSummary(stats) {
+    console.log(stats.category + ": " + stats.total + " total, " + stats.percentage.toFixed(2) + "% of all spending");
+}
+printStatsSummary(basicStats);
+printStatsSummary(investStats);
+printStatsSummary(chaosStats);
+printStatsSummary(signalStats);
 
 // Считаем сумму по expenseCategory: это слой "на что ушли деньги", а не BICS-причина покупки
 function sumByExpenseCategory(transactions, targetExpenseCategory) {
