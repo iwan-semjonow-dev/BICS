@@ -173,9 +173,7 @@ printStatsSummary(signalStats);
 
 if (chaosStats.percentage > 10) {
     console.log("Chaos spending is above 10%");
-}
-
-if (chaosStats.percentage < 10) {
+} else {
     console.log("Chaos spending is under control");
 }
 
