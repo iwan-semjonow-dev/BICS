@@ -168,6 +168,10 @@ GitHub is synchronized with `origin/main`.
 - `printStatsSummary` is manually reused for all four BICS stats objects: `basicStats`, `investStats`, `chaosStats`, and `signalStats`.
 - Old manual summary `console.log` lines for each BICS stats object were removed, so the summary format now lives in one function.
 - Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
+- JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.
+- Practical expense stats objects use `expenseCategory` instead of `category` to avoid mixing practical spending types with BICS behavioral categories.
+- Practical expense stats objects are read with dot notation to print clear console summaries for housing, education, food, and accessories.
+- Manual practical expense summary `console.log` lines are kept for now as a learning step; a future checkpoint may introduce a separate summary function for expense stats.
 - JavaScript comments checkpoint completed: beginner-friendly Russian block comments were added to `script.js` to explain the main data, reading, calculation, filtering, function, percentage, and expense total blocks.
 - Comments explain the purpose of each block for BICS and do not change JavaScript logic.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.

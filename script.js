@@ -189,11 +189,29 @@ console.log(housingTotal);
 const housingPercentage = calculatePercentage(housingTotal, totalAmount);
 console.log("Housing percentage: " + housingPercentage.toFixed(2) + "%");
 
+const housingStats = {
+    expenseCategory: "housing",
+    total: housingTotal,
+    percentage: housingPercentage
+};
+console.log(housingStats);
+
+console.log(housingStats.expenseCategory + ": " + housingStats.total + " total, " + housingStats.percentage.toFixed(2) + "% of all spending");
+
 const educationTotal = sumByExpenseCategory(transactions, "education");
 console.log(educationTotal);
 
 const educationPercentage = calculatePercentage(educationTotal, totalAmount);
 console.log("Education percentage: " + educationPercentage.toFixed(2) + "%");
+
+const educationStats = {
+    expenseCategory: "education",
+    total: educationTotal,
+    percentage: educationPercentage
+};
+
+console.log(educationStats);
+console.log(educationStats.expenseCategory + ": " + educationStats.total + " total, " + educationStats.percentage.toFixed(2) + "% of all spending");
 
 const foodTotal = sumByExpenseCategory(transactions, "food");
 console.log(foodTotal);
@@ -201,11 +219,27 @@ console.log(foodTotal);
 const foodPercentage = calculatePercentage(foodTotal, totalAmount);
 console.log("Food percentage: " + foodPercentage.toFixed(2) + "%");
 
+const foodStats = {
+    expenseCategory: "food",
+    total: foodTotal,
+    percentage: foodPercentage
+};
+console.log(foodStats);
+console.log(foodStats.expenseCategory + ": " + foodStats.total + " total, " + foodStats.percentage.toFixed(2) + "% of all spending");
+
 const accessoriesTotal = sumByExpenseCategory(transactions, "accessories");
 console.log(accessoriesTotal);
 
 const accessoriesPercentage = calculatePercentage(accessoriesTotal, totalAmount);
 console.log("Accessories percentage: " + accessoriesPercentage.toFixed(2) + "%");
+
+const accessoriesStats = {
+    expenseCategory: "accessories",
+    total: accessoriesTotal,
+    percentage: accessoriesPercentage
+};
+console.log(accessoriesStats);
+console.log(accessoriesStats.expenseCategory + ": " + accessoriesStats.total + " total, " + accessoriesStats.percentage.toFixed(2) + "% of all spending");
 
 
 
