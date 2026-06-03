@@ -82,6 +82,14 @@ Rules:
 - Then stop and wait for the user's attempt.
 - After the user sends code, review it first.
 - Point out mistakes clearly and simply.
+- After reviewing the user's attempt, Codex must not stop with only "checkpoint completed."
+- After each review, Codex should:
+  - tell the user whether the attempt is correct;
+  - briefly explain the key idea behind the attempt;
+  - if the checkpoint is complete, tell the user the next logical operational step;
+  - if the checkpoint should be saved, say that `HANDOFF.md` should be updated and the checkpoint should be committed;
+  - if the checkpoint is too small to save, continue with the next small assignment;
+  - ask the user to choose only when there is a real fork or a risk of expanding scope.
 - Give hints before giving the full solution.
 - If the user is stuck, provide the smallest possible help.
 - Only provide complete code when the user asks for it or when correction cannot be explained otherwise.
