@@ -167,6 +167,10 @@ GitHub is synchronized with `origin/main`.
 - JavaScript `printStatsSummary` checkpoint completed: `printStatsSummary(stats)` now reads `category`, `total`, and `percentage` from one stats object and prints a clear console summary.
 - `printStatsSummary` is manually reused for all four BICS stats objects: `basicStats`, `investStats`, `chaosStats`, and `signalStats`.
 - Old manual summary `console.log` lines for each BICS stats object were removed, so the summary format now lives in one function.
+- JavaScript condition checkpoint completed: `chaosStats.percentage` is checked with simple `if` statements in console-first mode.
+- The first condition prints `Chaos spending is above 10%` when `chaosStats.percentage` is greater than `10`.
+- The second condition prints `Chaos spending is under control` when `chaosStats.percentage` is less than `10`.
+- This starts a small analytics layer based on existing stats objects; `else`, DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.
 - Practical expense stats objects use `expenseCategory` instead of `category` to avoid mixing practical spending types with BICS behavioral categories.

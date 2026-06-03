@@ -171,6 +171,15 @@ printStatsSummary(investStats);
 printStatsSummary(chaosStats);
 printStatsSummary(signalStats);
 
+if (chaosStats.percentage > 10) {
+    console.log("Chaos spending is above 10%");
+}
+
+if (chaosStats.percentage < 10) {
+    console.log("Chaos spending is under control");
+}
+
+
 // Считаем сумму по expenseCategory: это слой "на что ушли деньги", а не BICS-причина покупки
 function sumByExpenseCategory(transactions, targetExpenseCategory) {
     let total = 0;
