@@ -182,6 +182,17 @@ function printChaosInsight(stats, threshold) {
 }
 printChaosInsight(chaosStats, chaosThreshold);
 
+const signalThreshold = 50;
+
+function printSignalInsight(stats, threshold) {
+    if (stats.percentage > threshold) {
+        console.log("Signal spending is above " + threshold + "%");
+    } else {
+        console.log("Signal spending is under control");
+    }
+}
+printSignalInsight(signalStats, signalThreshold);
+
 // Считаем сумму по expenseCategory: это слой "на что ушли деньги", а не BICS-причина покупки
 function sumByExpenseCategory(transactions, targetExpenseCategory) {
     let total = 0;
