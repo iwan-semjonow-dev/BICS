@@ -183,6 +183,8 @@ GitHub is synchronized with `origin/main`.
 - `printSignalInsight` receives a stats object and a threshold as parameters, then checks `stats.percentage` against `threshold`.
 - The function is called once with `signalStats` and `signalThreshold`, keeping the analytics logic named, small, and console-first.
 - This repeats the function-parameter insight pattern for another BICS category without starting DOM, HTML/CSS changes, stats object arrays, dashboard UI, localStorage, React, or backend work.
+- JavaScript `printSignalInsight` message checkpoint completed: both console messages now read the category name from `stats.category` instead of hard-coding `Signal`.
+- This keeps the displayed category name tied to the passed stats object while staying console-first.
 - This keeps the small analytics layer based on existing stats objects; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.
