@@ -90,6 +90,10 @@ Rules:
   - if the checkpoint should be saved, say that `HANDOFF.md` should be updated and the checkpoint should be committed;
   - if the checkpoint is too small to save, continue with the next small assignment;
   - ask the user to choose only when there is a real fork or a risk of expanding scope.
+- После важных учебных checkpoint-ов Codex должен задавать один или несколько коротких контрольных вопросов, чтобы проверить, понял ли пользователь концепцию, а не только работает ли код.
+- Обычно задавай 1-3 коротких вопроса, в зависимости от важности и сложности checkpoint-а.
+- Не задавай контрольные вопросы после каждой маленькой синтаксической правки.
+- Используй контрольные вопросы после важных концепций: parameters, objects, functions, `if / else`, thresholds, DOM, arrays и data flow.
 - Give hints before giving the full solution.
 - If the user is stuck, provide the smallest possible help.
 - Only provide complete code when the user asks for it or when correction cannot be explained otherwise.
