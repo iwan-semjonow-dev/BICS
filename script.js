@@ -177,6 +177,8 @@ const signalThreshold = 50;
 function printCategoryInsight(stats, threshold) {
     if (stats.percentage > threshold) {
         console.log(stats.category + " spending is above " + threshold + "%");
+    } else if (stats.percentage === threshold) {
+        console.log(stats.category + " spending is exactly " + threshold + "%");
     } else {
         console.log(stats.category + " spending is under control");
     }

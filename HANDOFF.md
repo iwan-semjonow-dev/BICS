@@ -133,7 +133,7 @@ GitHub is synchronized with `origin/main`.
 - GitHub: synchronized with `origin/main` at the last committed checkpoint.
 - Working tree: clean at the last committed checkpoint.
 - JavaScript is in data-first and console-first mode; DOM work has not started yet.
-- `script.js` contains transaction data, totals, reusable functions, percentages, BICS stats objects, practical expense stats objects, console summary functions, and a simple `if / else` analytics checkpoint.
+- `script.js` contains transaction data, totals, reusable functions, percentages, BICS stats objects, practical expense stats objects, console summary functions, and `if / else if / else` analytics logic.
 - Transaction `title` and `reason` values in `script.js` were translated to English.
 - BICS categories remain exact: `Basic`, `Invest`, `Chaos`, `Signal`.
 - Russian comments are allowed for learning support according to `AGENTS.md` language rules.
@@ -180,6 +180,10 @@ GitHub is synchronized with `origin/main`.
 - The function is called with `chaosStats` and `chaosThreshold`, then reused with `signalStats` and `signalThreshold`.
 - `chaosThreshold` remains `10`, and `signalThreshold` remains `50`.
 - This keeps the insight logic in one place while preserving console-first mode; DOM, HTML/CSS changes, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
+- JavaScript `if / else if / else` checkpoint completed: `printCategoryInsight(stats, threshold)` now distinguishes percentages above, exactly equal to, and below the provided threshold.
+- The `if` branch checks `stats.percentage > threshold`, the `else if` branch checks `stats.percentage === threshold`, and the final `else` handles values below the threshold.
+- The equality branch reads the category name from `stats.category` and prints that spending is exactly equal to the provided threshold.
+- The existing calls with `chaosStats` and `chaosThreshold`, and with `signalStats` and `signalThreshold`, remain unchanged.
 - This keeps the small analytics layer based on existing stats objects; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.
