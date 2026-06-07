@@ -175,9 +175,9 @@ const chaosThreshold = 10;
 
 function printChaosInsight(stats, threshold) {
     if (stats.percentage > threshold) {
-        console.log("Chaos spending is above " + threshold + "%");
+        console.log(stats.category + " spending is above " + threshold + "%");
     } else {
-        console.log("Chaos spending is under control");
+        console.log(stats.category + " spending is under control");
     }
 }
 printChaosInsight(chaosStats, chaosThreshold);
