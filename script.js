@@ -106,6 +106,9 @@ function sumByCategory(transactions, targetCategory) {
 }
 
 function calculatePercentage(categoryTotal, totalAmount) {
+    if (totalAmount === 0) {
+        return 0;
+    }
     return categoryTotal / totalAmount * 100;
 }
 

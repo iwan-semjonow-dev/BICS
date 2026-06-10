@@ -162,6 +162,10 @@ GitHub is synchronized with `origin/main`.
 - JavaScript reusable percentage function checkpoint completed: `calculatePercentage(categoryTotal, totalAmount)` now calculates a percentage from any part/total pair.
 - `calculatePercentage` is reused for all BICS category percentages: `basicPercentage`, `investPercentage`, `chaosPercentage`, and `signalPercentage`.
 - `calculatePercentage` is also reused for practical expense category percentages: `housingPercentage`, `educationPercentage`, `foodPercentage`, and `accessoriesPercentage`.
+- JavaScript safe percentage checkpoint completed: `calculatePercentage(categoryTotal, totalAmount)` now checks whether `totalAmount === 0` before performing division.
+- When `totalAmount` is `0`, the function uses an early `return 0`, so the percentage formula is not executed.
+- For non-zero totals, the existing `categoryTotal / totalAmount * 100` calculation remains unchanged.
+- This prevents invalid `NaN` or `Infinity` percentage values while preserving console-first mode.
 - JavaScript stats object checkpoint completed: `basicStats`, `investStats`, `chaosStats`, and `signalStats` now keep related BICS data together: `category`, `total`, and `percentage`.
 - JavaScript object reading checkpoint completed: each BICS stats object is read with dot notation to print a clear console summary, such as category name, total, and percentage of all spending.
 - JavaScript `printStatsSummary` checkpoint completed: `printStatsSummary(stats)` now reads `category`, `total`, and `percentage` from one stats object and prints a clear console summary.
