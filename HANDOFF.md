@@ -133,7 +133,7 @@ GitHub is synchronized with `origin/main`.
 - GitHub: synchronized with `origin/main` at the last committed checkpoint.
 - Working tree: clean at the last committed checkpoint.
 - JavaScript is in data-first and console-first mode; DOM work has not started yet.
-- `script.js` contains transaction data, totals, reusable functions, percentages, BICS stats objects, practical expense stats objects, console summary functions, and `if / else if / else` analytics logic.
+- `script.js` contains transaction data, totals, reusable functions, percentages, BICS stats objects, practical expense stats objects, console summary functions, and conditional analytics logic with early returns.
 - Transaction `title` and `reason` values in `script.js` were translated to English.
 - BICS categories remain exact: `Basic`, `Invest`, `Chaos`, `Signal`.
 - Russian comments are allowed for learning support according to `AGENTS.md` language rules.
@@ -181,6 +181,11 @@ GitHub is synchronized with `origin/main`.
 - `signalInsight` stores the string returned from `getCategoryInsight(signalStats, signalThreshold)`.
 - `console.log(chaosInsight)` and `console.log(signalInsight)` handle output separately from the function logic.
 - This separates insight generation from presentation and prepares the returned strings for future use without starting DOM, HTML/CSS changes, stats object arrays, dashboard UI, localStorage, React, or backend work.
+- JavaScript early return checkpoint completed: `getCategoryInsight(stats, threshold)` now uses two separate `if` statements followed by a final fallback `return`.
+- The first `if` returns the above-threshold message, and the second `if` returns the exact-threshold message.
+- If neither condition matches, the final `return` provides the under-control message for values below the threshold.
+- Because each matching branch immediately returns from the function, `else if` and `else` are no longer required.
+- `chaosInsight`, `signalInsight`, and their separate console output remain unchanged.
 - This keeps the small analytics layer based on existing stats objects; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.

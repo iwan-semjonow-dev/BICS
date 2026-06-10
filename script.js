@@ -177,18 +177,17 @@ const signalThreshold = 50;
 function getCategoryInsight(stats, threshold) {
     if (stats.percentage > threshold) {
         return stats.category + " spending is above " + threshold + "%";
-    } else if (stats.percentage === threshold) {
-        return stats.category + " spending is exactly " + threshold + "%";
-    } else {
-        return stats.category + " spending is under control";
     }
+    if (stats.percentage === threshold) {
+        return stats.category + " spending is exactly " + threshold + "%";
+    }
+    return stats.category + " spending is under control";
 }
 const chaosInsight = getCategoryInsight(chaosStats, chaosThreshold);
 console.log(chaosInsight);
 
 const signalInsight = getCategoryInsight(signalStats, signalThreshold);
 console.log(signalInsight);
-
 
 // Считаем сумму по expenseCategory: это слой "на что ушли деньги", а не BICS-причина покупки
 function sumByExpenseCategory(transactions, targetExpenseCategory) {
