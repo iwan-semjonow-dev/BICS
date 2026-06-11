@@ -135,7 +135,7 @@ const investTotal = sumByCategory(transactions, "Invest");
 console.log(investTotal);
 
 const investPercentage = calculatePercentage(investTotal, totalAmount);
-console.log("Invest percentage: " + investPercentage.toFixed(2) + "%");
+console.log("Invest percentage: " + formatPercentage(investPercentage));
 
 const investStats = {
     category: "Invest",
@@ -148,7 +148,7 @@ const chaosTotal = sumByCategory(transactions, "Chaos");
 console.log(chaosTotal);
 
 const chaosPercentage = calculatePercentage(chaosTotal, totalAmount);
-console.log("Chaos percentage: " + chaosPercentage.toFixed(2) + "%");
+console.log("Chaos percentage: " + formatPercentage(chaosPercentage));
 
 const chaosStats = {
     category: "Chaos",
@@ -161,7 +161,7 @@ const signalTotal = sumByCategory(transactions, "Signal");
 console.log(signalTotal);
 
 const signalPercentage = calculatePercentage(signalTotal, totalAmount);
-console.log("Signal percentage: " + signalPercentage.toFixed(2) + "%");
+console.log("Signal percentage: " + formatPercentage(signalPercentage));
 
 const signalStats = {
     category: "Signal",
@@ -212,7 +212,7 @@ const housingTotal = sumByExpenseCategory(transactions, "housing");
 console.log(housingTotal);
 
 const housingPercentage = calculatePercentage(housingTotal, totalAmount);
-console.log("Housing percentage: " + housingPercentage.toFixed(2) + "%");
+console.log("Housing percentage: " + formatPercentage(housingPercentage));
 
 const housingStats = {
     expenseCategory: "housing",
@@ -225,7 +225,7 @@ const educationTotal = sumByExpenseCategory(transactions, "education");
 console.log(educationTotal);
 
 const educationPercentage = calculatePercentage(educationTotal, totalAmount);
-console.log("Education percentage: " + educationPercentage.toFixed(2) + "%");
+console.log("Education percentage: " + formatPercentage(educationPercentage));
 
 const educationStats = {
     expenseCategory: "education",
@@ -238,7 +238,7 @@ const foodTotal = sumByExpenseCategory(transactions, "food");
 console.log(foodTotal);
 
 const foodPercentage = calculatePercentage(foodTotal, totalAmount);
-console.log("Food percentage: " + foodPercentage.toFixed(2) + "%");
+console.log("Food percentage: " + formatPercentage(foodPercentage));
 
 const foodStats = {
     expenseCategory: "food",
@@ -251,7 +251,7 @@ const accessoriesTotal = sumByExpenseCategory(transactions, "accessories");
 console.log(accessoriesTotal);
 
 const accessoriesPercentage = calculatePercentage(accessoriesTotal, totalAmount);
-console.log("Accessories percentage: " + accessoriesPercentage.toFixed(2) + "%");
+console.log("Accessories percentage: " + formatPercentage(accessoriesPercentage));
 
 const accessoriesStats = {
     expenseCategory: "accessories",

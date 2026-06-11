@@ -166,10 +166,11 @@ GitHub is synchronized with `origin/main`.
 - When `totalAmount` is `0`, the function uses an early `return 0`, so the percentage formula is not executed.
 - For non-zero totals, the existing `categoryTotal / totalAmount * 100` calculation remains unchanged.
 - This prevents invalid `NaN` or `Infinity` percentage values while preserving console-first mode.
-- JavaScript shared percentage formatter checkpoint completed: `formatPercentage(percentage)` formats a numeric percentage with two decimal places and adds the `%` symbol.
-- `basicPercentage` remains a number, while `formatPercentage(basicPercentage)` returns the display string used by the Basic percentage console output.
-- `printStatsSummary(stats)` and `printExpenseStatsSummary(stats)` now pass `stats.percentage` to `formatPercentage` instead of repeating `.toFixed(2) + "%"`.
-- Percentage formatting for both BICS and practical expense summaries now lives in one reusable function while the underlying percentage values remain numeric.
+- JavaScript full percentage formatter reuse checkpoint completed: `formatPercentage(percentage)` formats a numeric percentage with two decimal places and adds the `%` symbol.
+- All separate BICS percentage outputs now use `formatPercentage`: `basicPercentage`, `investPercentage`, `chaosPercentage`, and `signalPercentage`.
+- All separate practical expense percentage outputs now use `formatPercentage`: `housingPercentage`, `educationPercentage`, `foodPercentage`, and `accessoriesPercentage`.
+- `printStatsSummary(stats)` and `printExpenseStatsSummary(stats)` also pass `stats.percentage` to the same formatter.
+- Percentage values remain numeric after calculation, while formatting happens only when preparing console output.
 - JavaScript stats object checkpoint completed: `basicStats`, `investStats`, `chaosStats`, and `signalStats` now keep related BICS data together: `category`, `total`, and `percentage`.
 - JavaScript object reading checkpoint completed: each BICS stats object is read with dot notation to print a clear console summary, such as category name, total, and percentage of all spending.
 - JavaScript `printStatsSummary` checkpoint completed: `printStatsSummary(stats)` now reads `category`, `total`, and `percentage` from one stats object and prints a clear console summary.
