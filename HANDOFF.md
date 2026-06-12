@@ -203,6 +203,11 @@ GitHub is synchronized with `origin/main`.
 - JavaScript category-based comparison message checkpoint completed: all three Invest vs Chaos comparison messages now read category names from `investStats.category` and `chaosStats.category`.
 - The hard-coded `"Invest"` and `"Chaos"` names were removed from the comparison messages while the numeric comparison logic remains unchanged.
 - This keeps category names tied to their stats objects and preserves console-first mode.
+- JavaScript checkpoint `printCategoryComparison` завершён: прямой comparison block был перенесён в `printCategoryComparison(firstStats, secondStats)`.
+- Функция сравнивает `firstStats.percentage` с `secondStats.percentage` и читает названия категорий из `firstStats.category` и `secondStats.category`.
+- Функция сохраняет существующие ветки higher, equal и lower и печатает подходящее console message.
+- `printCategoryComparison` сейчас вызывается один раз с `investStats` и `chaosStats`.
+- Это делает comparison logic переиспользуемой для других пар BICS stats objects, сохраняя console-first режим.
 - Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.
 - Practical expense stats objects use `expenseCategory` instead of `category` to avoid mixing practical spending types with BICS behavioral categories.
