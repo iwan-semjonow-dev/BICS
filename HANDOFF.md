@@ -196,6 +196,10 @@ GitHub is synchronized with `origin/main`.
 - Because each matching branch immediately returns from the function, `else if` and `else` are no longer required.
 - `chaosInsight`, `signalInsight`, and their separate console output remain unchanged.
 - This keeps the small analytics layer based on existing stats objects; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
+- JavaScript Invest vs Chaos comparison checkpoint completed: `investStats.percentage` is compared with `chaosStats.percentage` using `if / else if / else`.
+- The `if` branch handles Invest percentages higher than Chaos, and the `else if` branch handles strict equality.
+- If neither previous condition matches, the final `else` reports that the Invest share is lower than the Chaos share.
+- The comparison uses raw numeric percentage values rather than formatted percentage strings and remains console-first.
 - Console-first mode remains active; DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.
 - Practical expense stats objects use `expenseCategory` instead of `category` to avoid mixing practical spending types with BICS behavioral categories.

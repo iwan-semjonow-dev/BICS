@@ -267,3 +267,11 @@ printExpenseStatsSummary(housingStats);
 printExpenseStatsSummary(educationStats);
 printExpenseStatsSummary(foodStats);
 printExpenseStatsSummary(accessoriesStats);
+
+if (investStats.percentage > chaosStats.percentage) {
+    console.log("Invest share is higher than Chaos share");
+} else if (investStats.percentage === chaosStats.percentage) {
+    console.log("Invest share is equal to Chaos share");
+} else {
+    console.log("Invest share is lower than Chaos share");
+}
