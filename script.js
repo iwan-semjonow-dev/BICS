@@ -115,11 +115,14 @@ console.log(basicTotal);
 const basicPercentage = calculatePercentage(basicTotal, totalAmount);
 console.log("Basic percentage: " + formatPercentage(basicPercentage));
 
-const basicStats = {
-    category: "Basic",
-    total: basicTotal,
-    percentage: basicPercentage
-};
+function createCategoryStats(category, total, percentage) {
+    return {
+        category: category,
+        total: total,
+        percentage: percentage
+    };
+}
+const basicStats = createCategoryStats("Basic", basicTotal, basicPercentage);
 console.log(basicStats);
 
 const investTotal = sumByCategory(transactions, "Invest");

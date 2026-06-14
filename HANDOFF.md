@@ -183,6 +183,11 @@ GitHub is synchronized with `origin/main`.
 - `printStatsSummary(stats)` and `printExpenseStatsSummary(stats)` also pass `stats.percentage` to the same formatter.
 - Percentage values remain numeric after calculation, while formatting happens only when preparing console output.
 - JavaScript stats object checkpoint completed: `basicStats`, `investStats`, `chaosStats`, and `signalStats` now keep related BICS data together: `category`, `total`, and `percentage`.
+- JavaScript `createCategoryStats` checkpoint completed: `createCategoryStats(category, total, percentage)` returns a BICS stats object containing those three values.
+- `basicStats` is now created with `createCategoryStats("Basic", basicTotal, basicPercentage)`.
+- `investStats`, `chaosStats`, and `signalStats` remain manually created for now; the new function is intentionally applied only to `basicStats` as a small learning step.
+- This checkpoint combines function parameters, object creation, and a returned value while preserving the existing console output.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check` confirmed valid syntax, unchanged output, and clean whitespace.
 - JavaScript object reading checkpoint completed: each BICS stats object is read with dot notation to print a clear console summary, such as category name, total, and percentage of all spending.
 - JavaScript `printStatsSummary` checkpoint completed: `printStatsSummary(stats)` now reads `category`, `total`, and `percentage` from one stats object and prints a clear console summary.
 - `printStatsSummary` is manually reused for all four BICS stats objects: `basicStats`, `investStats`, `chaosStats`, and `signalStats`.
