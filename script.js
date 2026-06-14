@@ -117,9 +117,9 @@ console.log("Basic percentage: " + formatPercentage(basicPercentage));
 
 function createCategoryStats(category, total, percentage) {
     return {
-        category: category,
-        total: total,
-        percentage: percentage
+        category,
+        total,
+        percentage
     };
 }
 const basicStats = createCategoryStats("Basic", basicTotal, basicPercentage);

@@ -187,6 +187,8 @@ GitHub is synchronized with `origin/main`.
 - JavaScript `createCategoryStats` reuse checkpoint completed: `basicStats`, `investStats`, `chaosStats`, and `signalStats` are now all created through `createCategoryStats`.
 - Each returned stats object keeps the same `category`, `total`, and `percentage` structure used by the existing summary, insight, and comparison logic.
 - This reuse combines function parameters, object creation, and returned values while removing repeated manual object creation and preserving the existing console output.
+- JavaScript object property shorthand checkpoint completed: the object returned by `createCategoryStats` now uses `category`, `total`, and `percentage` instead of the longer `category: category`, `total: total`, and `percentage: percentage` form.
+- The shorthand changes only the object syntax; the returned `{ category, total, percentage }` structure, all four BICS stats objects, and the existing JavaScript behavior remain unchanged.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check` confirmed valid syntax, unchanged output, and clean whitespace.
 - JavaScript object reading checkpoint completed: each BICS stats object is read with dot notation to print a clear console summary, such as category name, total, and percentage of all spending.
 - JavaScript `printStatsSummary` checkpoint completed: `printStatsSummary(stats)` now reads `category`, `total`, and `percentage` from one stats object and prints a clear console summary.
