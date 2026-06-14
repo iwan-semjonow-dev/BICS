@@ -1,39 +1,37 @@
-// Тестовые транзакции BICS: каждая покупка хранит текстовую причину, сумму, BICS-категорию и практический тип расхода
 const transactions = [
     {
-        title: "Apartment rent", // "Аренда квартиры"
-        reason: "Essential basic expense", // "Обязательные базовые расходы"
+        title: "Apartment rent",
+        reason: "Essential basic expense",
         category: "Basic",
         amount: 800,
         expenseCategory: "housing"
     },
 
     {
-        title: "JavaScript course", // "Курс по JavaScript"
-        reason: "Investment in personal development", // "Вложение в развитие"
+        title: "JavaScript course",
+        reason: "Investment in personal development",
         category: "Invest",
         amount: 400,
         expenseCategory: "education"
     },
 
     {
-        title: "Spontaneous food delivery", // "Спонтанная доставка еды"
-        reason: "Impulsive and unplanned spending", // "Импульсивные и незапланированные траты"
+        title: "Spontaneous food delivery",
+        reason: "Impulsive and unplanned spending",
         category: "Chaos",
         amount: 30,
         expenseCategory: "food"
     },
 
     {
-        title: "Expensive watch", // "Дорогие часы"
-        reason: "Purchase for status, image, and self-presentation", // "Покупки для статуса, образа и самопрезентации"
+        title: "Expensive watch",
+        reason: "Purchase for status, image, and self-presentation",
         category: "Signal",
         amount: 5000,
         expenseCategory: "accessories"
     }
 ];
 
-// Проверяем массив и учимся читать отдельные транзакции через индексы и свойства объекта
 console.log(transactions);
 console.log(transactions.length);
 
@@ -43,7 +41,6 @@ console.log(firstTransaction.reason);
 console.log(firstTransaction.category);
 console.log(firstTransaction.amount);
 
-
 const secondTransaction = transactions[1];
 console.log(secondTransaction.title);
 console.log(secondTransaction.category);
@@ -52,11 +49,9 @@ console.log(secondTransaction.amount);
 const lastTransaction = transactions[transactions.length - 1];
 console.log(lastTransaction.category);
 
-// Проверяем, что amount хранится как число и может использоваться в расчётах
 const firstTwoTotal = firstTransaction.amount + secondTransaction.amount;
 console.log(firstTwoTotal);
 
-// Считаем статистику по выбранной BICS-категории и общую сумму всех транзакций
 const targetCategory = "Basic";
 console.log("Searching category: " + targetCategory);
 
@@ -64,7 +59,6 @@ let count = 0;
 let totalAmount = 0;
 let categoryTotal = 0;
 
-// totalAmount обновляется вне if, чтобы учитывать все транзакции, а не только выбранную категорию
 for (let i = 0; i < transactions.length; i++) {
     if (transactions[i].category === targetCategory) {
         console.log(transactions[i].title + " - " + transactions[i].category);
@@ -78,7 +72,6 @@ console.log("Found: " + count);
 console.log("Total amount: " + totalAmount);
 console.log("Category total: " + categoryTotal);
 
-// Ищем и считаем сумму по практическому типу расхода, а не по BICS-категории
 console.log(firstTransaction.expenseCategory);
 console.log(lastTransaction.expenseCategory);
 
@@ -95,18 +88,16 @@ for (let i = 0; i < transactions.length; i++) {
 }
 console.log("Expense category total: " + expenseCategoryTotal);
 
-// Считаем сумму по BICS-категории и возвращаем число для дальнейших расчётов
-function sumByCategory(transactions, targetCategory) { 
+function sumByCategory(transactions, targetCategory) {
     let total = 0;
     for (let i = 0; i < transactions.length; i++) {
-        if (transactions[i].category === targetCategory){
+        if (transactions[i].category === targetCategory) {
             total = total + transactions[i].amount;
         }
     }
     return total;
 }
 
-// Считаем процент и защищаем расчёт от деления на ноль
 function calculatePercentage(categoryTotal, totalAmount) {
     if (totalAmount === 0) {
         return 0;
@@ -114,12 +105,9 @@ function calculatePercentage(categoryTotal, totalAmount) {
     return categoryTotal / totalAmount * 100;
 }
 
-// Превращаем числовой процент в строку только для вывода
 function formatPercentage(percentage) {
     return percentage.toFixed(2) + "%";
 }
-
-// Переиспользуем sumByCategory для всех BICS-категорий, считаем проценты и форматируем вывод для console
 
 const basicTotal = sumByCategory(transactions, "Basic");
 console.log(basicTotal);
@@ -127,7 +115,6 @@ console.log(basicTotal);
 const basicPercentage = calculatePercentage(basicTotal, totalAmount);
 console.log("Basic percentage: " + formatPercentage(basicPercentage));
 
-// Stats-объект объединяет название категории, сумму и процент
 const basicStats = {
     category: "Basic",
     total: basicTotal,
@@ -174,7 +161,6 @@ const signalStats = {
 };
 console.log(signalStats);
 
-// Выводим сводку в console; функция не возвращает строку для повторного использования
 function printStatsSummary(stats) {
     console.log(stats.category + ": " + stats.total + " total, " + formatPercentage(stats.percentage) + " of all spending");
 }
@@ -186,7 +172,6 @@ printStatsSummary(signalStats);
 const chaosThreshold = 10;
 const signalThreshold = 50;
 
-// Возвращаем строку с аналитическим выводом; её печать выполняется отдельно
 function getCategoryInsight(stats, threshold) {
     if (stats.percentage > threshold) {
         return stats.category + " spending is above " + threshold + "%";
@@ -202,7 +187,6 @@ console.log(chaosInsight);
 const signalInsight = getCategoryInsight(signalStats, signalThreshold);
 console.log(signalInsight);
 
-// Считаем сумму по expenseCategory: это слой "на что ушли деньги", а не BICS-причина покупки
 function sumByExpenseCategory(transactions, targetExpenseCategory) {
     let total = 0;
     for (let i = 0; i < transactions.length; i++) {
@@ -213,7 +197,6 @@ function sumByExpenseCategory(transactions, targetExpenseCategory) {
     return total;
 }
 
-// Переиспользуем sumByExpenseCategory для разных типов расходов и готовим данные для будущей структуры расходов
 const housingTotal = sumByExpenseCategory(transactions, "housing");
 console.log(housingTotal);
 
@@ -274,7 +257,6 @@ printExpenseStatsSummary(educationStats);
 printExpenseStatsSummary(foodStats);
 printExpenseStatsSummary(accessoriesStats);
 
-// Сравниваем исходные числовые проценты двух stats-объектов и возвращаем сообщение
 function getCategoryComparison(firstStats, secondStats) {
     if (firstStats.percentage > secondStats.percentage) {
         return firstStats.category + " share is higher than " + secondStats.category + " share";
