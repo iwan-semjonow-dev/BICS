@@ -131,11 +131,7 @@ console.log(investTotal);
 const investPercentage = calculatePercentage(investTotal, totalAmount);
 console.log("Invest percentage: " + formatPercentage(investPercentage));
 
-const investStats = {
-    category: "Invest",
-    total: investTotal,
-    percentage: investPercentage
-};
+const investStats = createCategoryStats("Invest", investTotal, investPercentage);
 console.log(investStats);
 
 const chaosTotal = sumByCategory(transactions, "Chaos");
@@ -144,11 +140,7 @@ console.log(chaosTotal);
 const chaosPercentage = calculatePercentage(chaosTotal, totalAmount);
 console.log("Chaos percentage: " + formatPercentage(chaosPercentage));
 
-const chaosStats = {
-    category: "Chaos",
-    total: chaosTotal,
-    percentage: chaosPercentage
-};
+const chaosStats = createCategoryStats("Chaos", chaosTotal, chaosPercentage);
 console.log(chaosStats);
 
 const signalTotal = sumByCategory(transactions, "Signal");
@@ -157,11 +149,7 @@ console.log(signalTotal);
 const signalPercentage = calculatePercentage(signalTotal, totalAmount);
 console.log("Signal percentage: " + formatPercentage(signalPercentage));
 
-const signalStats = {
-    category: "Signal",
-    total: signalTotal,
-    percentage: signalPercentage
-};
+const signalStats = createCategoryStats("Signal", signalTotal, signalPercentage);
 console.log(signalStats);
 
 function printStatsSummary(stats) {
