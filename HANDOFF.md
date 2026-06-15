@@ -236,6 +236,11 @@ GitHub is synchronized with `origin/main`.
 - DOM, HTML, CSS, stats object arrays, dashboard UI, localStorage, React, and backend work have not started.
 - JavaScript practical expense stats object checkpoint completed: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` now keep related practical expense data together: `expenseCategory`, `total`, and `percentage`.
 - Practical expense stats objects use `expenseCategory` instead of `category` to avoid mixing practical spending types with BICS behavioral categories.
+- JavaScript `createExpenseStats` checkpoint completed: `createExpenseStats(expenseCategory, total, percentage)` returns a practical expense stats object using shorthand properties.
+- `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats` are now all created through `createExpenseStats`.
+- Each returned object keeps the existing `{ expenseCategory, total, percentage }` structure, and `printExpenseStatsSummary(stats)` continues to read `stats.expenseCategory`.
+- This removes repeated manual object creation while preserving the existing JavaScript behavior and console output.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check` confirmed valid syntax, unchanged output, and clean whitespace.
 - Practical expense stats objects are read with dot notation to print clear console summaries for housing, education, food, and accessories.
 - JavaScript `printExpenseStatsSummary` checkpoint completed: `printExpenseStatsSummary(stats)` now reads `expenseCategory`, `total`, and `percentage` from one practical expense stats object and prints a clear console summary.
 - `printExpenseStatsSummary` is manually reused for all four practical expense stats objects: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats`.

@@ -188,17 +188,20 @@ function sumByExpenseCategory(transactions, targetExpenseCategory) {
     return total;
 }
 
+function createExpenseStats(expenseCategory, total, percentage) {
+    return {
+        expenseCategory,
+        total,
+        percentage
+    };
+}
 const housingTotal = sumByExpenseCategory(transactions, "housing");
 console.log(housingTotal);
 
 const housingPercentage = calculatePercentage(housingTotal, totalAmount);
 console.log("Housing percentage: " + formatPercentage(housingPercentage));
 
-const housingStats = {
-    expenseCategory: "housing",
-    total: housingTotal,
-    percentage: housingPercentage
-};
+const housingStats = createExpenseStats("housing", housingTotal, housingPercentage);
 console.log(housingStats);
 
 const educationTotal = sumByExpenseCategory(transactions, "education");
@@ -207,11 +210,7 @@ console.log(educationTotal);
 const educationPercentage = calculatePercentage(educationTotal, totalAmount);
 console.log("Education percentage: " + formatPercentage(educationPercentage));
 
-const educationStats = {
-    expenseCategory: "education",
-    total: educationTotal,
-    percentage: educationPercentage
-};
+const educationStats = createExpenseStats("education", educationTotal, educationPercentage);
 console.log(educationStats);
 
 const foodTotal = sumByExpenseCategory(transactions, "food");
@@ -220,11 +219,7 @@ console.log(foodTotal);
 const foodPercentage = calculatePercentage(foodTotal, totalAmount);
 console.log("Food percentage: " + formatPercentage(foodPercentage));
 
-const foodStats = {
-    expenseCategory: "food",
-    total: foodTotal,
-    percentage: foodPercentage
-};
+const foodStats = createExpenseStats("food", foodTotal, foodPercentage);
 console.log(foodStats);
 
 const accessoriesTotal = sumByExpenseCategory(transactions, "accessories");
@@ -233,11 +228,7 @@ console.log(accessoriesTotal);
 const accessoriesPercentage = calculatePercentage(accessoriesTotal, totalAmount);
 console.log("Accessories percentage: " + formatPercentage(accessoriesPercentage));
 
-const accessoriesStats = {
-    expenseCategory: "accessories",
-    total: accessoriesTotal,
-    percentage: accessoriesPercentage
-};
+const accessoriesStats = createExpenseStats("accessories", accessoriesTotal, accessoriesPercentage);
 console.log(accessoriesStats);
 
 function printExpenseStatsSummary(stats) {
