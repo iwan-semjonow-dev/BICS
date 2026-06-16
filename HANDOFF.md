@@ -134,11 +134,11 @@ GitHub is synchronized with `origin/main`.
 
 ## Current Status
 
-- Local `main` is synchronized with `origin/main` at commit `78bc07422135d675693e43c150ca7584e6ca941c`.
-- `AGENTS.md` is clean.
-- `README.md` is clean.
-- `script.js` remains modified, unstaged, and uncommitted from a separate earlier task.
-- `script.js` must not be included in documentation-only commits.
+- Local `main` is synchronized with `origin/main` at commit `a5acfdb`.
+- Working tree is clean.
+- Latest pushed checkpoint: `a5acfdb refactor: destructure category insight parameters`.
+- `AGENTS.md`, `README.md`, `HANDOFF.md`, `script.js`, `index.html`, and `styles.css` are clean.
+- `script.explained.js` remains local-only and ignored through `.git/info/exclude`; it may be stale compared with the current `script.js` and should not be treated as source of truth.
 - `AGENTS.md` documentation checkpoint completed: stronger mentoring workflow rules were added, including the Session Start Checklist, Review Format, Weak Points Tracking, Scope Protection Rule, and Terminal and File Safety Rules.
 - Commit `26f3a3b docs: update BICS mentoring workflow rules` was pushed to GitHub.
 - `README.md` documentation checkpoint completed: the file was translated fully to English and now serves as a more public, GitHub-friendly project description.
