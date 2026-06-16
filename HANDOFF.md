@@ -134,9 +134,10 @@ GitHub is synchronized with `origin/main`.
 
 ## Current Status
 
-- Local `main` is synchronized with `origin/main` at commit `a5acfdb`.
+- Local `main` is synchronized with `origin/main` at commit `beddf61`.
 - Working tree is clean.
-- Latest pushed checkpoint: `a5acfdb refactor: destructure category insight parameters`.
+- Latest pushed commit: `beddf61 docs: update handoff current git state`.
+- Latest coding checkpoint: `a5acfdb refactor: destructure category insight parameters`.
 - `AGENTS.md`, `README.md`, `HANDOFF.md`, `script.js`, `index.html`, and `styles.css` are clean.
 - `script.explained.js` remains local-only and ignored through `.git/info/exclude`; it may be stale compared with the current `script.js` and should not be treated as source of truth.
 - `AGENTS.md` documentation checkpoint completed: stronger mentoring workflow rules were added, including the Session Start Checklist, Review Format, Weak Points Tracking, Scope Protection Rule, and Terminal and File Safety Rules.
@@ -257,8 +258,6 @@ GitHub is synchronized with `origin/main`.
 - Inside `getCategoryInsight`, conditions use `percentage` instead of `stats.percentage`, and messages use `category` instead of `stats.category`.
 - Existing calls with `chaosStats` and `chaosThreshold`, and with `signalStats` and `signalThreshold`, remain unchanged.
 - Console output remains unchanged, and no DOM, HTML/CSS, localStorage, React, backend, UI, dashboard, forms, or new scope was started.
-- JavaScript comments checkpoint completed: beginner-friendly Russian block comments were added to `script.js` to explain the main data, reading, calculation, filtering, function, percentage, and expense total blocks.
-- Comments explain the purpose of each block for BICS and do not change JavaScript logic.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
 - Comments explain the purpose of each section for BICS and do not change HTML structure.
 - During the HTML comments checkpoint, no CSS, JavaScript logic, or DOM changes were made.
