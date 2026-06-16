@@ -253,6 +253,10 @@ GitHub is synchronized with `origin/main`.
 - `printExpenseStatsSummary({ expenseCategory, total, percentage })` now destructures the practical expense stats properties directly in the function parameter.
 - The previous local destructuring lines inside both function bodies were removed; the original stats objects are still not modified.
 - Console output remains unchanged, and the project remains data-first and console-first.
+- JavaScript `getCategoryInsight` parameter destructuring checkpoint completed: `getCategoryInsight({ category, percentage }, threshold)` now destructures the needed stats properties directly in the first function parameter.
+- Inside `getCategoryInsight`, conditions use `percentage` instead of `stats.percentage`, and messages use `category` instead of `stats.category`.
+- Existing calls with `chaosStats` and `chaosThreshold`, and with `signalStats` and `signalThreshold`, remain unchanged.
+- Console output remains unchanged, and no DOM, HTML/CSS, localStorage, React, backend, UI, dashboard, forms, or new scope was started.
 - JavaScript comments checkpoint completed: beginner-friendly Russian block comments were added to `script.js` to explain the main data, reading, calculation, filtering, function, percentage, and expense total blocks.
 - Comments explain the purpose of each block for BICS and do not change JavaScript logic.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.

@@ -163,14 +163,14 @@ printStatsSummary(signalStats);
 const chaosThreshold = 10;
 const signalThreshold = 50;
 
-function getCategoryInsight(stats, threshold) {
-    if (stats.percentage > threshold) {
-        return stats.category + " spending is above " + threshold + "%";
+function getCategoryInsight({ category, percentage }, threshold) {
+    if (percentage > threshold) {
+        return category + " spending is above " + threshold + "%";
     }
-    if (stats.percentage === threshold) {
-        return stats.category + " spending is exactly " + threshold + "%";
+    if (percentage === threshold) {
+        return category + " spending is exactly " + threshold + "%";
     }
-    return stats.category + " spending is under control";
+    return category + " spending is under control";
 }
 const chaosInsight = getCategoryInsight(chaosStats, chaosThreshold);
 console.log(chaosInsight);
