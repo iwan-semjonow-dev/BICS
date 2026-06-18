@@ -269,3 +269,15 @@ if (signalStats.percentage > currentLeader.percentage) {
     currentLeader = signalStats;
 }
 console.log(currentLeader.category + " is the strongest BICS category with " + formatPercentage(currentLeader.percentage));
+
+let currentWeakest = basicStats;
+if (investStats.percentage < currentWeakest.percentage) {
+    currentWeakest = investStats;
+}
+if (chaosStats.percentage < currentWeakest.percentage) {
+    currentWeakest = chaosStats;
+}
+if (signalStats.percentage < currentWeakest.percentage) {
+    currentWeakest = signalStats;
+}
+console.log(currentWeakest.category + " is the weakest BICS category with " + formatPercentage(currentWeakest.percentage));
