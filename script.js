@@ -284,3 +284,11 @@ console.log(currentWeakest.category + " is the weakest BICS category with " + fo
 
 const bicsSpread = currentLeader.percentage - currentWeakest.percentage;
 console.log("BICS spread is " + formatPercentage(bicsSpread));
+
+const bicsSpreadThreshold = 50;
+
+if (bicsSpread > bicsSpreadThreshold) {
+    console.log("BICS spending is highly concentrated");
+} else {
+    console.log("BICS spending is more balanced");
+}
