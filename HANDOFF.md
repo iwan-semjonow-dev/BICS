@@ -295,6 +295,13 @@ GitHub is synchronized with `origin/main`.
 - This checkpoint belongs to BICS analytics logic and prepares future imbalance insight logic while remaining data-first and console-first.
 - DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript high-concentration insight with dominant BICS category checkpoint completed: the `if` branch now includes `currentLeader.category` in its console message.
+- Because `currentLeader` stores the whole stats object, the insight reads the actual dominant category dynamically instead of hard-coding `Signal`.
+- With the current data, the new console output is `BICS spending is highly concentrated in Signal`.
+- If another BICS category becomes the leader, the same message updates automatically from `currentLeader.category`.
+- The `bicsSpreadThreshold` value, `bicsSpread > bicsSpreadThreshold` condition, and `else` branch were not changed; the `else` branch still outputs `BICS spending is more balanced`.
+- This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
 - Comments explain the purpose of each section for BICS and do not change HTML structure.
 - During the HTML comments checkpoint, no CSS, JavaScript logic, or DOM changes were made.
