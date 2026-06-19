@@ -317,6 +317,13 @@ GitHub is synchronized with `origin/main`.
 - With the current data, `bicsSpread` is `79.78%`, so the high-concentration branch still runs; the moderate branch was structurally verified but was not reached by the current data.
 - This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript moderate BICS spread insight with dominant category checkpoint completed: the moderate branch now includes `currentLeader.category` dynamically.
+- Because `currentLeader` stores the whole stats object, the moderate insight reuses its `category` property instead of hard-coding a BICS category name.
+- For example, if the moderate branch runs while `Invest` is the current leader, the output is `BICS spending has moderate concentration in Invest`.
+- With the current data, the high-concentration branch still runs, so the moderate branch was structurally verified but was not reached by the current console output.
+- The thresholds, high-concentration branch, and balanced `else` branch were not changed.
+- This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
 - Comments explain the purpose of each section for BICS and do not change HTML structure.
 - During the HTML comments checkpoint, no CSS, JavaScript logic, or DOM changes were made.

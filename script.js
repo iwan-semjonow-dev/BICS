@@ -291,7 +291,7 @@ const bicsSpreadModerateThreshold = 25;
 if (bicsSpread > bicsSpreadThreshold) {
     console.log("BICS spending is highly concentrated in " + currentLeader.category + " at " + formatPercentage(currentLeader.percentage));
 } else if (bicsSpread > bicsSpreadModerateThreshold) {
-    console.log("BICS spending has moderate concentration");
+    console.log("BICS spending has moderate concentration in " + currentLeader.category);
 } else {
     console.log("BICS spending is more balanced");
 }
