@@ -308,6 +308,9 @@ if (signalStats.percentage > currentLeader.percentage) {
 }
 console.log(currentLeader.category + " is the strongest BICS category with " + formatPercentage(currentLeader.percentage));
 
+const otherCategoriesTotal = totalAmount - currentLeader.total;
+console.log("Other BICS categories total excluding " + currentLeader.category + ": " + otherCategoriesTotal);
+
 let currentWeakest = basicStats;
 if (investStats.percentage < currentWeakest.percentage) {
     currentWeakest = investStats;
