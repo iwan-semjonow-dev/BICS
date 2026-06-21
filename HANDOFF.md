@@ -356,6 +356,13 @@ GitHub is synchronized with `origin/main`.
 - Current real data does not trigger the warning because Invest is higher than Chaos; the test case `investChaosDifference = -6` triggers both `Invest and Chaos shares have a noticeable gap` and `Chaos share is noticeably higher than Invest`.
 - This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript Invest vs Chaos amount difference checkpoint completed: numeric `investChaosAmountDifference` is calculated as `investStats.total - chaosStats.total`.
+- The value compares actual total amounts rather than percentages and remains numeric; `formatPercentage` is not used because this is not a percentage value.
+- The current output is `Invest vs Chaos amount difference: 370`, meaning that the Invest total is higher than the Chaos total by `370`.
+- A positive value means Invest total is higher than Chaos total, a negative value means Chaos total is higher than Invest total, and zero means both totals are equal.
+- `investChaosDifference` compares spending structure through percentages, while `investChaosAmountDifference` compares the actual money gap; the amount difference may later support summary text, monthly comparisons, financial energy score logic, or dashboard cards.
+- This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
 - Comments explain the purpose of each section for BICS and do not change HTML structure.
 - During the HTML comments checkpoint, no CSS, JavaScript logic, or DOM changes were made.

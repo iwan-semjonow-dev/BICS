@@ -279,6 +279,9 @@ if (investChaosDifference < 0 && (Math.abs(investChaosDifference) > investChaosD
     console.log("Chaos share is noticeably higher than Invest");
 }
 
+const investChaosAmountDifference = investStats.total - chaosStats.total;
+console.log("Invest vs Chaos amount difference: " + investChaosAmountDifference);
+
 let currentLeader = basicStats;
 if (investStats.percentage > currentLeader.percentage) {
     currentLeader = investStats;
