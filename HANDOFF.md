@@ -340,6 +340,15 @@ GitHub is synchronized with `origin/main`.
 - The sign of `investChaosDifference` remains available for the analytics conditions, while `formatPercentage` is used only when preparing percentage output.
 - This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript Invest vs Chaos noticeable gap threshold checkpoint completed: `investChaosDifferenceThreshold` stores the numeric learning threshold value `5`.
+- The logic compares `Math.abs(investChaosDifference)` with `investChaosDifferenceThreshold` to evaluate the size of the gap independently of its sign.
+- A difference greater than `5` outputs `Invest and Chaos shares have a noticeable gap`; otherwise, the output is `Invest and Chaos shares are close`.
+- With the current data, the absolute difference is `5.94`, so `5.94 > 5` triggers the noticeable-gap branch.
+- The sign-based insight says whether Invest or Chaos is higher, while the threshold-based gap insight says whether the difference is noticeable.
+- `Math.abs` returns a new positive value for comparison and does not mutate the numeric `investChaosDifference`.
+- The threshold value `5` is currently a learning rule, not a final scientifically validated BICS rule; this console-first value may later support text insights, soft warnings, monthly comparisons, financial energy score logic, or dashboard summary cards.
+- This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - HTML comments checkpoint completed: beginner-friendly Russian block comments were added to `index.html` for the main semantic sections: `header`, `summary-section`, `categories-section`, and `transactions-section`.
 - Comments explain the purpose of each section for BICS and do not change HTML structure.
 - During the HTML comments checkpoint, no CSS, JavaScript logic, or DOM changes were made.
