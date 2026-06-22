@@ -310,6 +310,13 @@ console.log(currentLeader.category + " is the strongest BICS category with " + f
 
 const otherCategoriesTotal = totalAmount - currentLeader.total;
 console.log("Other BICS categories total excluding " + currentLeader.category + ": " + otherCategoriesTotal);
+if (currentLeader.total > otherCategoriesTotal) {
+    console.log(currentLeader.category + " total is higher than all other BICS categories combined");
+} else if (currentLeader.total === otherCategoriesTotal) {
+    console.log(currentLeader.category + " total is equal to all other BICS categories combined");
+} else {
+    console.log(currentLeader.category + " total is lower than all other BICS categories combined");
+}
 
 let currentWeakest = basicStats;
 if (investStats.percentage < currentWeakest.percentage) {
