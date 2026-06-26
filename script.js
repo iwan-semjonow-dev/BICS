@@ -370,3 +370,10 @@ console.log(currentExpenseWeakest.expenseCategory + " is the smallest expense ca
 
 const expenseSpread = currentExpenseLeader.percentage - currentExpenseWeakest.percentage;
 console.log("Expense spread is " + formatPercentage(expenseSpread));
+
+const expenseSpreadThreshold = 50;
+if (expenseSpread > expenseSpreadThreshold) {
+    console.log("Expense spread is highly concentrated in " + currentExpenseLeader.expenseCategory);
+} else {
+    console.log("Expense spread is more balanced");
+}

@@ -310,6 +310,14 @@ GitHub is synchronized with `origin/main`.
 - This mirrors the existing `bicsSpread` logic, but `bicsSpread` works with behavioral BICS categories while `expenseSpread` works with practical expense categories.
 - This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript practical expense spread threshold insight checkpoint completed: `expenseSpreadThreshold` stores the numeric threshold value `50`, and `expenseSpread > expenseSpreadThreshold` decides which message is printed.
+- When the condition is true, the output is `Expense spread is highly concentrated in <currentExpenseLeader.expenseCategory>`; otherwise, the output is `Expense spread is more balanced`.
+- With the current data, `currentExpenseLeader.expenseCategory` is `accessories`, so the current output is `Expense spread is highly concentrated in accessories`.
+- `expenseSpread` and `expenseSpreadThreshold` remain numeric, and `currentExpenseLeader.expenseCategory` keeps the message dynamic instead of hard-coding the category name.
+- If `expenseSpread` is exactly `50`, the `else` branch runs because the condition uses `>`, not `>=`.
+- This checkpoint belongs to practical expense category analytics and converts numeric `expenseSpread` into a simple console-first insight.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript weakest BICS category console-first analytics checkpoint completed: a new block finds the BICS category with the lowest percentage.
 - `currentWeakest` starts as `basicStats`, then `investStats.percentage`, `chaosStats.percentage`, and `signalStats.percentage` are compared with `currentWeakest.percentage`.
 - When a category has a lower percentage, `currentWeakest` is updated to the whole stats object, not only to the percentage number.
