@@ -247,6 +247,14 @@ printExpenseStatsSummary(educationStats);
 printExpenseStatsSummary(foodStats);
 printExpenseStatsSummary(accessoriesStats);
 
+const expenseStatsList = [
+    housingStats,
+    educationStats,
+    foodStats,
+    accessoriesStats
+];
+console.log(expenseStatsList);
+
 function getCategoryComparison(
     { category: firstCategory, percentage: firstPercentage },
     { category: secondCategory, percentage: secondPercentage }

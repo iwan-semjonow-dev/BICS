@@ -265,6 +265,15 @@ GitHub is synchronized with `origin/main`.
 - JavaScript `printExpenseStatsSummary` checkpoint completed: `printExpenseStatsSummary(stats)` now reads `expenseCategory`, `total`, and `percentage` from one practical expense stats object and prints a clear console summary.
 - `printExpenseStatsSummary` is manually reused for all four practical expense stats objects: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats`.
 - Old manual practical expense summary `console.log` lines were removed, so the practical expense summary format now lives in one function.
+- JavaScript `expenseStatsList` refactor-lite checkpoint completed: `expenseStatsList` stores the existing practical expense stats objects directly: `housingStats`, `educationStats`, `foodStats`, and `accessoriesStats`.
+- The new console output prints an array of the four practical expense stats objects, including `housing`, `education`, `food`, and `accessories` with their `expenseCategory`, `total`, and `percentage` values.
+- `expenseStatsList` contains the original stats objects directly, not wrapper objects.
+- This mirrors the earlier `bicsStatsList` pattern, but for practical expense categories: `bicsStatsList` works with behavioral BICS categories and uses `category`, while `expenseStatsList` works with practical expense categories and uses `expenseCategory`.
+- Existing manual `printExpenseStatsSummary(...)` calls were not changed yet, and no leader/weakest logic was changed.
+- No new function was created; this is a refactor-lite step toward future loop-based logic for practical expense summaries.
+- Existing outputs were not changed except for the new `expenseStatsList` console output.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript summary object destructuring checkpoint completed: `printStatsSummary(stats)` now destructures `category`, `total`, and `percentage` from `stats`.
 - `printExpenseStatsSummary(stats)` now destructures `expenseCategory`, `total`, and `percentage` from `stats`.
 - Destructuring copies the property values into local variables and does not modify the original stats objects.
