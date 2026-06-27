@@ -373,7 +373,7 @@ console.log("Expense spread is " + formatPercentage(expenseSpread));
 
 const expenseSpreadThreshold = 50;
 if (expenseSpread > expenseSpreadThreshold) {
-    console.log("Expense spread is highly concentrated in " + currentExpenseLeader.expenseCategory);
+    console.log("Expense spread is highly concentrated in " + currentExpenseLeader.expenseCategory + " at " + formatPercentage(currentExpenseLeader.percentage));
 } else {
     console.log("Expense spread is more balanced");
 }

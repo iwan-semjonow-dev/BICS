@@ -318,6 +318,14 @@ GitHub is synchronized with `origin/main`.
 - This checkpoint belongs to practical expense category analytics and converts numeric `expenseSpread` into a simple console-first insight.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript practical expense spread high message percentage checkpoint completed: only the high-concentration `console.log` inside the `expenseSpread` `if` branch was changed.
+- The high-concentration message now includes `currentExpenseLeader.expenseCategory` and `formatPercentage(currentExpenseLeader.percentage)`.
+- With the current data, the output is `Expense spread is highly concentrated in accessories at 80.26%`.
+- `currentExpenseLeader.expenseCategory` keeps the category dynamic, while `currentExpenseLeader.percentage` remains numeric and is formatted only when preparing console output.
+- `expenseSpreadThreshold`, the `expenseSpread > expenseSpreadThreshold` condition, and the `else` branch were not changed.
+- This checkpoint belongs to practical expense category analytics and makes the insight more informative by showing the percentage of the largest practical expense category.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript weakest BICS category console-first analytics checkpoint completed: a new block finds the BICS category with the lowest percentage.
 - `currentWeakest` starts as `basicStats`, then `investStats.percentage`, `chaosStats.percentage`, and `signalStats.percentage` are compared with `currentWeakest.percentage`.
 - When a category has a lower percentage, `currentWeakest` is updated to the whole stats object, not only to the percentage number.
