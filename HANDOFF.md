@@ -274,6 +274,16 @@ GitHub is synchronized with `origin/main`.
 - Existing outputs were not changed except for the new `expenseStatsList` console output.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript `printExpenseStatsSummary` loop checkpoint completed: four manual `printExpenseStatsSummary(...)` calls were replaced by one `for` loop over `expenseStatsList`.
+- The removed manual calls were `printExpenseStatsSummary(housingStats)`, `printExpenseStatsSummary(educationStats)`, `printExpenseStatsSummary(foodStats)`, and `printExpenseStatsSummary(accessoriesStats)`.
+- `expenseStatsList` is now used as a working data structure, not only as a displayed array.
+- Inside the loop, `expenseStatsList[i]` means one practical expense stats object from the array, `expenseStatsList.length` controls how many times the loop runs, and `i++` moves the loop to the next item.
+- Each practical expense stats object is passed into the same reusable `printExpenseStatsSummary(...)` function, reducing repeated manual code.
+- The practical expense summary output still appears once and keeps the same meaning: housing, education, food, and accessories totals and percentages are printed in order.
+- `currentExpenseLeader` and `currentExpenseWeakest` logic was not changed, and no new function was created.
+- This mirrors the earlier `bicsStatsList` loop checkpoint and remains a refactor-lite step toward loop-based logic.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript summary object destructuring checkpoint completed: `printStatsSummary(stats)` now destructures `category`, `total`, and `percentage` from `stats`.
 - `printExpenseStatsSummary(stats)` now destructures `expenseCategory`, `total`, and `percentage` from `stats`.
 - Destructuring copies the property values into local variables and does not modify the original stats objects.

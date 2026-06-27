@@ -242,10 +242,6 @@ console.log(accessoriesStats);
 function printExpenseStatsSummary({ expenseCategory, total, percentage }) {
     console.log(expenseCategory + ": " + total + " total, " + formatPercentage(percentage) + " of all spending");
 }
-printExpenseStatsSummary(housingStats);
-printExpenseStatsSummary(educationStats);
-printExpenseStatsSummary(foodStats);
-printExpenseStatsSummary(accessoriesStats);
 
 const expenseStatsList = [
     housingStats,
@@ -254,6 +250,10 @@ const expenseStatsList = [
     accessoriesStats
 ];
 console.log(expenseStatsList);
+
+for (let i = 0; i < expenseStatsList.length; i++) {
+    printExpenseStatsSummary(expenseStatsList[i]);
+}
 
 function getCategoryComparison(
     { category: firstCategory, percentage: firstPercentage },
