@@ -352,15 +352,11 @@ if (bicsSpread > bicsSpreadThreshold) {
     console.log("BICS spending is more balanced");
 }
 
-let currentExpenseLeader = housingStats;
-if (educationStats.percentage > currentExpenseLeader.percentage) {
-    currentExpenseLeader = educationStats;
-}
-if (foodStats.percentage > currentExpenseLeader.percentage) {
-    currentExpenseLeader = foodStats;
-}
-if (accessoriesStats.percentage > currentExpenseLeader.percentage) {
-    currentExpenseLeader = accessoriesStats;
+let currentExpenseLeader = expenseStatsList[0];
+for (let i = 0; i < expenseStatsList.length; i++) {
+    if (expenseStatsList[i].percentage > currentExpenseLeader.percentage) {
+        currentExpenseLeader = expenseStatsList[i];
+    }
 }
 console.log(currentExpenseLeader.expenseCategory + " is the largest expense category with " + formatPercentage(currentExpenseLeader.percentage));
 

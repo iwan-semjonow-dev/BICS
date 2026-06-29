@@ -356,6 +356,18 @@ GitHub is synchronized with `origin/main`.
 - With the current data, the output is `accessories is the largest expense category with 80.26%`; `formatPercentage(currentExpenseLeader.percentage)` is used because the displayed value is a percentage.
 - This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript `currentExpenseLeader` loop over `expenseStatsList` checkpoint completed: the old manual practical expense leader comparison block was replaced with one loop over `expenseStatsList`.
+- `currentExpenseLeader` now starts from `expenseStatsList[0]`, which gives the first practical expense stats object and provides the starting value for comparison.
+- Inside the loop, `expenseStatsList[i]` means the current practical expense stats object, `expenseStatsList[i].percentage` means the current object's percentage, and `currentExpenseLeader.percentage` means the highest percentage found so far.
+- When a higher percentage is found, `currentExpenseLeader = expenseStatsList[i]` stores the whole stats object, not only the percentage number.
+- This mirrors `currentLeader`, but works with practical expense stats from `expenseStatsList` and uses `expenseCategory` in the final output.
+- The learning corrections were: use `<` instead of `>` in the loop length check, use `>` instead of `=` for comparison, and store `expenseStatsList[i]` instead of the whole `expenseStatsList` array.
+- Duplicate `let currentExpenseLeader` declarations were avoided by replacing the old block instead of adding a second `currentExpenseLeader` block in the same scope.
+- The final output meaning did not change: `accessories is the largest expense category with 80.26%`.
+- `currentExpenseWeakest` and the BICS `currentLeader` / `currentWeakest` logic were not changed in this checkpoint.
+- This is a refactor-lite step from manual comparisons to loop-based analytics while remaining JavaScript data-first and console-first.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category weakest checkpoint completed: `currentExpenseWeakest` starts as `housingStats` and is declared with `let` because the variable may be reassigned to a different stats object.
 - `educationStats`, `foodStats`, and `accessoriesStats` are compared with `currentExpenseWeakest` by numeric `.percentage`; the comparison uses `<` because the goal is to find the smallest percentage.
 - When a lower percentage is found, the whole stats object is assigned to `currentExpenseWeakest`, preserving access to `.expenseCategory`, `.total`, and `.percentage`.
