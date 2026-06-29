@@ -310,6 +310,17 @@ GitHub is synchronized with `origin/main`.
 - The new console output is `Signal is the strongest BICS category with 80.26%`.
 - This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript `currentLeader` loop over `bicsStatsList` checkpoint completed: the old manual strongest-category comparison block was replaced with one loop over `bicsStatsList`.
+- `currentLeader` now starts from `bicsStatsList[0]`, which gives the first stats object and provides a safe starting value for comparison.
+- Inside the loop, `bicsStatsList[i]` means the current stats object, `bicsStatsList[i].percentage` means the current object's percentage, and `currentLeader.percentage` means the best percentage found so far.
+- When a higher percentage is found, `currentLeader = bicsStatsList[i]` stores the whole stats object, not only the percentage number.
+- Duplicate `let currentLeader` declarations were avoided by replacing the old block instead of adding a second `currentLeader` block in the same scope.
+- The replaced manual comparisons were the direct comparisons against `investStats`, `chaosStats`, and `signalStats`.
+- The final output meaning did not change: `Signal is the strongest BICS category with 80.26%`.
+- `currentWeakest` logic and practical expense logic were not changed.
+- This is a refactor-lite step from manual comparisons to loop-based analytics while remaining JavaScript data-first and console-first.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript other BICS categories total checkpoint completed: numeric `otherCategoriesTotal` is calculated as `totalAmount - currentLeader.total`.
 - The calculation creates a comparison layer between the strongest BICS category and all other BICS categories combined.
 - The output reads the excluded category dynamically from `currentLeader.category`, so it does not hard-code `Signal` and will update if another category becomes the leader.

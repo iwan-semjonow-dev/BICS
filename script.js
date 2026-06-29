@@ -312,15 +312,11 @@ if (Math.abs(investChaosAmountDifference) > investChaosAmountDifferenceThreshold
     console.log("Invest and Chaos totals are close in amount");
 }
 
-let currentLeader = basicStats;
-if (investStats.percentage > currentLeader.percentage) {
-    currentLeader = investStats;
-}
-if (chaosStats.percentage > currentLeader.percentage) {
-    currentLeader = chaosStats;
-}
-if (signalStats.percentage > currentLeader.percentage) {
-    currentLeader = signalStats;
+let currentLeader = bicsStatsList[0];
+for (let i = 0; i < bicsStatsList.length; i++) {
+    if (bicsStatsList[i].percentage > currentLeader.percentage) {
+        currentLeader = bicsStatsList[i];
+    }
 }
 console.log(currentLeader.category + " is the strongest BICS category with " + formatPercentage(currentLeader.percentage));
 
