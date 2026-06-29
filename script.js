@@ -330,15 +330,11 @@ if (currentLeader.total > otherCategoriesTotal) {
     console.log(currentLeader.category + " total is lower than all other BICS categories combined");
 }
 
-let currentWeakest = basicStats;
-if (investStats.percentage < currentWeakest.percentage) {
-    currentWeakest = investStats;
-}
-if (chaosStats.percentage < currentWeakest.percentage) {
-    currentWeakest = chaosStats;
-}
-if (signalStats.percentage < currentWeakest.percentage) {
-    currentWeakest = signalStats;
+let currentWeakest = bicsStatsList[0];
+for (let i = 0; i < bicsStatsList.length; i++) {
+    if (bicsStatsList[i].percentage < currentWeakest.percentage) {
+        currentWeakest = bicsStatsList[i];
+    }
 }
 console.log(currentWeakest.category + " is the weakest BICS category with " + formatPercentage(currentWeakest.percentage));
 

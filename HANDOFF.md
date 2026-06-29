@@ -321,6 +321,18 @@ GitHub is synchronized with `origin/main`.
 - This is a refactor-lite step from manual comparisons to loop-based analytics while remaining JavaScript data-first and console-first.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript `currentWeakest` loop over `bicsStatsList` checkpoint completed: the old manual weakest-category comparison block was replaced with one loop over `bicsStatsList`.
+- `currentWeakest` now starts from `bicsStatsList[0]`, and the loop checks every BICS stats object in the array.
+- This mirrors the `currentLeader` loop, but searches for the minimum percentage instead of the maximum: `currentLeader` uses `>`, while `currentWeakest` uses `<`.
+- Inside the loop, `bicsStatsList[i]` means the current stats object, `bicsStatsList[i].percentage` means the current object's percentage, and `currentWeakest.percentage` means the lowest percentage found so far.
+- When a lower percentage is found, `currentWeakest = bicsStatsList[i]` stores the whole stats object, not only the percentage number.
+- Duplicate `let currentWeakest` declarations were avoided by replacing the old block instead of adding a second `currentWeakest` block in the same scope.
+- The replaced manual comparisons were the direct comparisons against `investStats`, `chaosStats`, and `signalStats`.
+- The final output meaning did not change: `Chaos is the weakest BICS category with 0.48%`.
+- `currentLeader` logic and practical expense logic were not changed in this checkpoint.
+- This is a refactor-lite step from manual comparisons to loop-based analytics while remaining JavaScript data-first and console-first.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript other BICS categories total checkpoint completed: numeric `otherCategoriesTotal` is calculated as `totalAmount - currentLeader.total`.
 - The calculation creates a comparison layer between the strongest BICS category and all other BICS categories combined.
 - The output reads the excluded category dynamically from `currentLeader.category`, so it does not hard-code `Signal` and will update if another category becomes the leader.
