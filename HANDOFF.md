@@ -376,6 +376,18 @@ GitHub is synchronized with `origin/main`.
 - `currentExpenseWeakest` mirrors `currentExpenseLeader`: the leader logic uses `>` to find the largest practical expense share, and the weakest logic uses `<` to find the smallest practical expense share.
 - This checkpoint belongs to BICS analytics logic and remains data-first and console-first; DOM, HTML/CSS, localStorage, React, backend, dashboard, forms, charts, UI logic, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript `currentExpenseWeakest` loop over `expenseStatsList` checkpoint completed: the old manual practical expense weakest comparison block was replaced with one loop over `expenseStatsList`.
+- `currentExpenseWeakest` now starts from `expenseStatsList[0]`, which gives the first practical expense stats object and provides the starting value for comparison.
+- Inside the loop, `expenseStatsList[i]` means the current practical expense stats object, `expenseStatsList[i].percentage` means the current object's percentage, and `currentExpenseWeakest.percentage` means the lowest percentage found so far.
+- When a lower percentage is found, `currentExpenseWeakest = expenseStatsList[i]` stores the whole stats object, not only the percentage number.
+- This mirrors `currentExpenseLeader`, but searches for the minimum percentage instead of the maximum: `currentExpenseLeader` uses `>`, while `currentExpenseWeakest` uses `<`.
+- The corrected mistake was that `currentExpenseWeakest` is one object, not an array, so the condition must use `expenseStatsList[i].percentage`, not `currentExpenseWeakest[i].percentage`.
+- Duplicate `let currentExpenseWeakest` declarations were avoided by replacing the old block instead of adding a second `currentExpenseWeakest` block in the same scope.
+- The final output meaning did not change: `food is the smallest expense category with 0.48%`.
+- `currentExpenseLeader` and the BICS `currentLeader` / `currentWeakest` logic were not changed in this checkpoint.
+- This is a refactor-lite step from manual comparisons to loop-based analytics while remaining JavaScript data-first and console-first.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.

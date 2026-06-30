@@ -360,15 +360,11 @@ for (let i = 0; i < expenseStatsList.length; i++) {
 }
 console.log(currentExpenseLeader.expenseCategory + " is the largest expense category with " + formatPercentage(currentExpenseLeader.percentage));
 
-let currentExpenseWeakest = housingStats;
-if (educationStats.percentage < currentExpenseWeakest.percentage) {
-    currentExpenseWeakest = educationStats;
-}
-if (foodStats.percentage < currentExpenseWeakest.percentage) {
-    currentExpenseWeakest = foodStats;
-}
-if (accessoriesStats.percentage < currentExpenseWeakest.percentage) {
-    currentExpenseWeakest = accessoriesStats;
+let currentExpenseWeakest = expenseStatsList[0];
+for (let i = 0; i < expenseStatsList.length; i++) {
+    if (expenseStatsList[i].percentage < currentExpenseWeakest.percentage) {
+        currentExpenseWeakest = expenseStatsList[i];
+    }
 }
 console.log(currentExpenseWeakest.expenseCategory + " is the smallest expense category with " + formatPercentage(currentExpenseWeakest.percentage));
 
