@@ -445,6 +445,20 @@ GitHub is synchronized with `origin/main`.
 - This is a safe refactor-lite step: reusable spread level values are calculated first, and those values can be used inside insight logic later.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript BICS spread insight level checkpoint completed: the BICS spread insight block now uses `bicsSpreadLevel` instead of re-checking `bicsSpread` against numeric thresholds directly.
+- `bicsSpreadLevel` comes from `getSpreadLevel(bicsSpread, bicsSpreadThreshold, bicsSpreadModerateThreshold)`, and the current key output is `BICS spread level: high`.
+- The BICS insight block now checks text classification values with strict equality: `bicsSpreadLevel === "high"` and `bicsSpreadLevel === "moderate"`.
+- The `else` branch still handles the balanced case.
+- `getSpreadLevel(...)` already compares the numeric `bicsSpread` value with numeric thresholds, so after it returns, `bicsSpreadLevel` is a string, not a number.
+- Because `bicsSpreadLevel` can be `"high"`, `"moderate"`, or `"balanced"`, the insight block should compare it with strings using `===`.
+- The insight block should not compare `bicsSpreadLevel` with numeric thresholds, and it should not use `>` with `"moderate"`.
+- Numeric classification happens inside `getSpreadLevel(...)`, while message selection happens outside with `bicsSpreadLevel`.
+- This separates classification logic from insight message logic.
+- `getSpreadLevel`, `calculateStatsSpread`, `findHighestPercentageStats`, and `findLowestPercentageStats` were not changed.
+- The expense spread insight block was not changed, and the final BICS insight output meaning did not change.
+- This is a safe refactor-lite step that uses the existing reusable level for BICS insight only.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.
