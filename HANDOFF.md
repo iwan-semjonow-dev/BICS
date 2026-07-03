@@ -459,6 +459,19 @@ GitHub is synchronized with `origin/main`.
 - This is a safe refactor-lite step that uses the existing reusable level for BICS insight only.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript BICS spread insight message separation checkpoint completed: the BICS spread insight block now stores the selected message in `bicsSpreadInsight` before printing it.
+- `bicsSpreadLevel` still controls the `if / else if / else` logic, while `bicsSpreadInsight` stores the message that should be shown.
+- `bicsSpreadInsight` is declared with `let` because its value is assigned later inside the `if`, `else if`, or `else` branch.
+- The `if` block now selects a message by assigning a string to `bicsSpreadInsight` instead of printing immediately.
+- `console.log(bicsSpreadInsight)` now happens once after the `if` block.
+- With the current data, the key output remains `BICS spending is highly concentrated in Signal at 80.26%`.
+- The conditions should still check `bicsSpreadLevel`, not `bicsSpreadInsight`.
+- This separates message selection from message output and is a small step toward cleaner architecture without changing behavior.
+- The expense spread insight block was not changed.
+- `getSpreadLevel`, `calculateStatsSpread`, `findHighestPercentageStats`, and `findLowestPercentageStats` were not changed.
+- The final BICS insight output meaning did not change.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript expense spread insight level checkpoint completed: the expense spread insight block now uses `expenseSpreadLevel` instead of re-checking `expenseSpread` against numeric thresholds directly.
 - `expenseSpreadLevel` comes from `getSpreadLevel(expenseSpread, expenseSpreadThreshold, expenseSpreadModerateThreshold)`, and the current key output is `Expense spread level: high`.
 - The expense insight block now checks text classification values with strict equality: `expenseSpreadLevel === "high"` and `expenseSpreadLevel === "moderate"`.
