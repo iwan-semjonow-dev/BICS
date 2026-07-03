@@ -459,6 +459,20 @@ GitHub is synchronized with `origin/main`.
 - This is a safe refactor-lite step that uses the existing reusable level for BICS insight only.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript expense spread insight level checkpoint completed: the expense spread insight block now uses `expenseSpreadLevel` instead of re-checking `expenseSpread` against numeric thresholds directly.
+- `expenseSpreadLevel` comes from `getSpreadLevel(expenseSpread, expenseSpreadThreshold, expenseSpreadModerateThreshold)`, and the current key output is `Expense spread level: high`.
+- The expense insight block now checks text classification values with strict equality: `expenseSpreadLevel === "high"` and `expenseSpreadLevel === "moderate"`.
+- The `else` branch still handles the balanced case.
+- `getSpreadLevel(...)` already compares the numeric `expenseSpread` value with numeric thresholds, so after it returns, `expenseSpreadLevel` is a string, not a number.
+- Because `expenseSpreadLevel` can be `"high"`, `"moderate"`, or `"balanced"`, the insight block should compare it with strings using `===`.
+- The insight block should not compare `expenseSpreadLevel` with numeric thresholds, and it should not use `>` with `"moderate"`.
+- Numeric classification happens inside `getSpreadLevel(...)`, while message selection happens outside with `expenseSpreadLevel`.
+- This mirrors the previous BICS spread level insight refactor; both spread insight blocks now use the same architecture: `getSpreadLevel(...)` classifies, a spread level variable stores the string result, and the insight block selects the message by string value.
+- The BICS spread insight block, `getSpreadLevel`, `calculateStatsSpread`, `findHighestPercentageStats`, and `findLowestPercentageStats` were not changed in this checkpoint.
+- The final expense insight output meaning did not change.
+- This is a safe refactor-lite step that uses the existing reusable level for expense insight only.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.
