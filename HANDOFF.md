@@ -515,6 +515,17 @@ GitHub is synchronized with `origin/main`.
 - The final BICS insight output meaning did not change.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript expense spread insight function extraction checkpoint completed: `getExpenseSpreadInsight(spreadLevel, leaderStats)` now returns the selected expense spread insight message.
+- `expenseSpreadInsight` now stores the returned string from `getExpenseSpreadInsight(expenseSpreadLevel, currentExpenseLeader)`, and `console.log(expenseSpreadInsight)` remains outside the function.
+- With the current data, the key output remains `Expense spread is highly concentrated in accessories at 80.26%`.
+- `spreadLevel` and `leaderStats` are function parameters; inside the function, the code uses `spreadLevel`, `leaderStats.expenseCategory`, and `leaderStats.percentage` instead of relying on external `currentExpenseLeader`.
+- The function uses `return`, not `console.log`, so message selection stays inside the function while output stays outside the function.
+- The old `let expenseSpreadInsight` `if / else` block was removed, so `expenseSpreadInsight` can be declared with `const` from the returned function result.
+- This mirrors the previous `getBicsSpreadInsight` checkpoint, but uses practical expense stats and `.expenseCategory`.
+- The BICS spread insight block, `getSpreadLevel`, `calculateStatsSpread`, `findHighestPercentageStats`, and `findLowestPercentageStats` were not changed.
+- The final expense insight output meaning did not change.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.
