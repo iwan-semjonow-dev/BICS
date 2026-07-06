@@ -550,6 +550,19 @@ GitHub is synchronized with `origin/main`.
 - The final Invest vs Chaos amount insight output meaning did not change.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript Invest vs Chaos amount gap insight function extraction checkpoint completed: `getInvestChaosAmountGapInsight(amountDifference, threshold)` now returns the selected amount gap insight message.
+- The function receives two parameters, `amountDifference` and `threshold`, and compares `Math.abs(amountDifference) > threshold`.
+- The function returns the existing `Invest and Chaos totals have a noticeable amount gap` or `Invest and Chaos totals are close in amount` message string.
+- `investChaosAmountGapInsight` now stores the returned string from `getInvestChaosAmountGapInsight(investChaosAmountDifference, investChaosAmountDifferenceThreshold)`, and `console.log(investChaosAmountGapInsight)` remains outside the function.
+- With the current data, the key output remains `Invest and Chaos totals have a noticeable amount gap`.
+- Inside the function, the code uses the parameters `amountDifference` and `threshold` instead of relying on external `investChaosAmountDifference` or `investChaosAmountDifferenceThreshold`.
+- The function uses `return`, not `console.log`, so message selection stays inside the function while output stays outside the function.
+- The old direct `if / else` `console.log` block for the amount gap threshold was removed.
+- The threshold value remains `300`, and the condition still uses `>`, not `>=`, so a difference exactly equal to `300` still reaches the `else` branch.
+- `investChaosAmountDifference` calculation, transaction data, category names, threshold value, threshold condition, and helper functions were not changed.
+- The final Invest vs Chaos amount gap insight output meaning did not change.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.

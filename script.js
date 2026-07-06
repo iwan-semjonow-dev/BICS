@@ -311,11 +311,16 @@ const investChaosAmountInsight = getInvestChaosAmountInsight(investChaosAmountDi
 console.log(investChaosAmountInsight);
 
 const investChaosAmountDifferenceThreshold = 300;
-if (Math.abs(investChaosAmountDifference) > investChaosAmountDifferenceThreshold) {
-    console.log("Invest and Chaos totals have a noticeable amount gap");
-} else {
-    console.log("Invest and Chaos totals are close in amount");
+
+function getInvestChaosAmountGapInsight(amountDifference, threshold) {
+    if (Math.abs(amountDifference) > threshold) {
+        return "Invest and Chaos totals have a noticeable amount gap";
+    } else {
+        return "Invest and Chaos totals are close in amount";
+    }
 }
+const investChaosAmountGapInsight = getInvestChaosAmountGapInsight(investChaosAmountDifference, investChaosAmountDifferenceThreshold);
+console.log(investChaosAmountGapInsight);
 
 function findHighestPercentageStats(statsList) {
     let highestStats = statsList[0];
@@ -330,8 +335,6 @@ function findHighestPercentageStats(statsList) {
 
 const currentLeader = findHighestPercentageStats(bicsStatsList);
 console.log(currentLeader.category + " is the strongest BICS category with " + formatPercentage(currentLeader.percentage));
-
-
 
 const otherCategoriesTotal = totalAmount - currentLeader.total;
 console.log("Other BICS categories total excluding " + currentLeader.category + ": " + otherCategoriesTotal);
