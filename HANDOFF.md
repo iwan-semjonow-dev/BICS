@@ -563,6 +563,18 @@ GitHub is synchronized with `origin/main`.
 - The final Invest vs Chaos amount gap insight output meaning did not change.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript Invest vs Chaos share insight function extraction checkpoint completed: `getInvestChaosShareInsight(percentageDifference)` now returns the selected percentage share insight message.
+- The function checks whether numeric `percentageDifference` is greater than `0`, less than `0`, or equal to `0`, and returns the existing Invest higher, Chaos higher, or equal message string.
+- `investChaosShareInsight` now stores the returned string from `getInvestChaosShareInsight(investChaosDifference)`, and `console.log(investChaosShareInsight)` remains outside the function.
+- With the current data, the key output remains `Invest share is higher than Chaos by 5.94%`, and it appears only once.
+- Inside the function, the code uses the parameter `percentageDifference` and `Math.abs(percentageDifference)` instead of relying on external `investChaosDifference`.
+- The function uses `return`, not `console.log`, so message selection stays inside the function while output stays outside the function.
+- The old direct `if / else if / else` `console.log` block for `investChaosDifference` was removed.
+- The share insight still works with percentages, so `formatPercentage` is used for readable output.
+- `investChaosDifference` calculation, threshold logic, amount blocks, transaction data, category names, and helper functions were not changed.
+- The final Invest vs Chaos share insight output meaning did not change.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.

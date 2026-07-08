@@ -276,13 +276,18 @@ console.log(basicBasicComparison);
 
 const investChaosDifference = investStats.percentage - chaosStats.percentage;
 console.log("Invest vs Chaos difference: " + formatPercentage(investChaosDifference));
-if (investChaosDifference > 0) {
-    console.log("Invest share is higher than Chaos by " + formatPercentage(investChaosDifference));
-} else if (investChaosDifference < 0) {
-    console.log("Chaos share is higher than Invest by " + formatPercentage(Math.abs(investChaosDifference)));
-} else {
-    console.log("Invest and Chaos shares are equal");
+
+function getInvestChaosShareInsight(percentageDifference) {
+    if (percentageDifference > 0) {
+        return "Invest share is higher than Chaos by " + formatPercentage(percentageDifference);
+    } else if (percentageDifference < 0) {
+        return "Chaos share is higher than Invest by " + formatPercentage(Math.abs(percentageDifference));
+    } else {
+        return "Invest and Chaos shares are equal";
+    }
 }
+const investChaosShareInsight = getInvestChaosShareInsight(investChaosDifference);
+console.log(investChaosShareInsight);
 
 const investChaosDifferenceThreshold = 5;
 if (Math.abs(investChaosDifference) > investChaosDifferenceThreshold) {
