@@ -599,6 +599,16 @@ GitHub is synchronized with `origin/main`.
 - The share insight, share gap insight, amount blocks, helper functions, calculations, transaction data, category names, and warning text were not changed.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript reusable percentage difference calculation checkpoint completed: `calculatePercentageDifference(firstStats, secondStats)` now returns a numeric percentage difference.
+- The function receives two stats objects, `firstStats` and `secondStats`, and calculates `firstStats.percentage - secondStats.percentage`.
+- The function returns a number, not a message string, and it does not use `console.log` or `formatPercentage`.
+- `investChaosDifference` is now created with `calculatePercentageDifference(investStats, chaosStats)`.
+- The original console output remains `Invest vs Chaos difference: 5.94%`.
+- Downstream Invest vs Chaos insights keep the same meaning: `Invest share is higher than Chaos by 5.94%` and `Invest and Chaos shares have a noticeable gap`.
+- This helper separates numeric calculation from message generation and can later be reused with another pair of stats objects.
+- The share insight, share gap insight, Chaos warning, amount blocks, helper functions, calculations, transaction data, category names, and output text were not changed.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.

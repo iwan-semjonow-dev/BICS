@@ -274,7 +274,10 @@ console.log(basicSignalComparison);
 const basicBasicComparison = getCategoryComparison(basicStats, basicStats);
 console.log(basicBasicComparison);
 
-const investChaosDifference = investStats.percentage - chaosStats.percentage;
+function calculatePercentageDifference(firstStats, secondStats) {
+    return firstStats.percentage - secondStats.percentage;
+}
+const investChaosDifference = calculatePercentageDifference(investStats, chaosStats);
 console.log("Invest vs Chaos difference: " + formatPercentage(investChaosDifference));
 
 function getInvestChaosShareInsight(percentageDifference) {
