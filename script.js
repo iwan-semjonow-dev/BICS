@@ -354,7 +354,10 @@ function findHighestPercentageStats(statsList) {
 const currentLeader = findHighestPercentageStats(bicsStatsList);
 console.log(currentLeader.category + " is the strongest BICS category with " + formatPercentage(currentLeader.percentage));
 
-const otherCategoriesTotal = totalAmount - currentLeader.total;
+function calculateOtherCategoriesTotal(totalAmount, leaderStats) {
+    return totalAmount - leaderStats.total;
+}
+const otherCategoriesTotal = calculateOtherCategoriesTotal(totalAmount, currentLeader);
 console.log("Other BICS categories total excluding " + currentLeader.category + ": " + otherCategoriesTotal);
 
 function getLeaderVsOtherCategoriesInsight(leaderStats, otherTotal) {

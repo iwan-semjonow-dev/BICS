@@ -619,6 +619,15 @@ GitHub is synchronized with `origin/main`.
 - The share insight, share gap insight, Chaos warning, amount insight functions, thresholds, helper functions, calculations, transaction data, category names, and output text were not changed.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript reusable other-categories total calculation checkpoint completed: `calculateOtherCategoriesTotal(totalAmount, leaderStats)` now returns the total for all BICS categories except the leader.
+- The function receives numeric `totalAmount` and a `leaderStats` object, then calculates `totalAmount - leaderStats.total`.
+- The helper returns a number and uses its `leaderStats` parameter instead of relying on external `currentLeader` inside the function.
+- `otherCategoriesTotal` is now created with `calculateOtherCategoriesTotal(totalAmount, currentLeader)`.
+- The original console output remains outside the function: `Other BICS categories total excluding Signal: 1230`.
+- The downstream leader comparison keeps the same meaning: `Signal total is higher than all other BICS categories combined`.
+- `getLeaderVsOtherCategoriesInsight`, leader and weakest logic, calculations, transaction data, thresholds, helper functions, and output text were not changed.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.
