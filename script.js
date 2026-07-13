@@ -426,6 +426,9 @@ console.log(bicsSpreadInsight);
 const currentExpenseLeader = findHighestPercentageStats(expenseStatsList);
 console.log(currentExpenseLeader.expenseCategory + " is the largest expense category with " + formatPercentage(currentExpenseLeader.percentage));
 
+const otherExpenseCategoriesTotal = calculateOtherCategoriesTotal(totalAmount, currentExpenseLeader);
+console.log("Other expense categories total excluding " + currentExpenseLeader.expenseCategory + ": " + otherExpenseCategoriesTotal);
+
 const currentExpenseWeakest = findLowestPercentageStats(expenseStatsList);
 console.log(currentExpenseWeakest.expenseCategory + " is the smallest expense category with " + formatPercentage(currentExpenseWeakest.percentage));
 

@@ -628,6 +628,14 @@ GitHub is synchronized with `origin/main`.
 - `getLeaderVsOtherCategoriesInsight`, leader and weakest logic, calculations, transaction data, thresholds, helper functions, and output text were not changed.
 - DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- JavaScript practical expense other-categories total reuse checkpoint completed: the existing `calculateOtherCategoriesTotal(totalAmount, leaderStats)` helper is now also used with practical expense stats.
+- `otherExpenseCategoriesTotal` is created with `calculateOtherCategoriesTotal(totalAmount, currentExpenseLeader)`; no new calculation helper was created and the existing helper was not changed.
+- `currentExpenseLeader` is one practical expense stats object with a numeric `.total` property, while `expenseStatsList` is an array and is not the value needed by this calculation.
+- The console output remains outside the helper and, with current data, is `Other expense categories total excluding accessories: 1230`.
+- `calculateOtherCategoriesTotal` now works for both BICS stats and practical expense stats because both object types have a numeric `.total` property.
+- BICS other-categories logic, expense leader logic, transaction data, thresholds, helper functions, and existing output text were not changed.
+- DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, forms, and new scope were not started.
+- Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - JavaScript practical expense category spread checkpoint completed: numeric `expenseSpread` is calculated as `currentExpenseLeader.percentage - currentExpenseWeakest.percentage`.
 - `currentExpenseLeader` provides the largest practical expense category, and `currentExpenseWeakest` provides the smallest practical expense category.
 - `expenseSpread` remains numeric, and `const` is correct because the value is calculated once and not reassigned.
