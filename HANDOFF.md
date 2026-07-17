@@ -794,6 +794,10 @@ GitHub is synchronized with `origin/main`.
 - The object stores `totalAmount`, `statsList`, `leader`, `weakest`, `otherCategoriesTotal`, `spread`, `spreadLevel`, and `spreadInsight` using the existing expense variables, including `otherExpenseCategoriesTotal`.
 - A new `console.log(expenseReport)` prints the structured practical expense report; `bicsReport`, existing calculations, insight functions, and console output text were not changed or removed.
 - `investChaosReport` and `getExpenseLeaderVsOtherCategoriesInsight` were not started. DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, and forms remain out of scope.
+- JavaScript minimal `investChaosReport` checkpoint completed: `investChaosReport` is declared after the existing Invest vs Chaos amount gap output and only collects existing comparison results.
+- The object stores `invest`, `chaos`, `comparison`, share and amount differences with their existing thresholds, plus the existing share and amount insight strings.
+- A new `console.log(investChaosReport)` prints the structured Invest vs Chaos report; no calculations, insight functions, thresholds, boolean logic, existing console output text, `bicsReport`, or `expenseReport` were changed.
+- `getExpenseLeaderVsOtherCategoriesInsight` remains postponed. DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, and forms remain out of scope.
 
 ## Completed First JavaScript Plan
 

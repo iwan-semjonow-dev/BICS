@@ -340,6 +340,21 @@ function getInvestChaosAmountGapInsight(amountDifference, threshold) {
 const investChaosAmountGapInsight = getInvestChaosAmountGapInsight(investChaosAmountDifference, investChaosAmountDifferenceThreshold);
 console.log(investChaosAmountGapInsight);
 
+const investChaosReport = {
+    invest: investStats,
+    chaos: chaosStats,
+    comparison: investChaosComparison,
+    shareDifference: investChaosDifference,
+    shareDifferenceThreshold: investChaosDifferenceThreshold,
+    shareInsight: investChaosShareInsight,
+    shareGapInsight: investChaosShareGapInsight,
+    amountDifference: investChaosAmountDifference,
+    amountDifferenceThreshold: investChaosAmountDifferenceThreshold,
+    amountInsight: investChaosAmountInsight,
+    amountGapInsight: investChaosAmountGapInsight
+};
+console.log(investChaosReport);
+
 function findHighestPercentageStats(statsList) {
     let highestStats = statsList[0];
 
