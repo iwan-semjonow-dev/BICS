@@ -798,6 +798,9 @@ GitHub is synchronized with `origin/main`.
 - The object stores `invest`, `chaos`, `comparison`, share and amount differences with their existing thresholds, plus the existing share and amount insight strings.
 - A new `console.log(investChaosReport)` prints the structured Invest vs Chaos report; no calculations, insight functions, thresholds, boolean logic, existing console output text, `bicsReport`, or `expenseReport` were changed.
 - `getExpenseLeaderVsOtherCategoriesInsight` remains postponed. DOM, UI, CSS, HTML changes, localStorage, React, backend, dashboard, charts, and forms remain out of scope.
+- JavaScript `getExpenseLeaderVsOtherCategoriesInsight` checkpoint completed: the function mirrors the BICS leader-versus-other-categories insight for practical expenses.
+- It compares `leaderStats.total` with `otherTotal`, uses `leaderStats.expenseCategory`, and returns a higher, equal, or lower message. Its result is created from `currentExpenseLeader` and `otherExpenseCategoriesTotal` and printed with `console.log`.
+- With the current data, it prints `accessories total is higher than all other expense categories combined`. The three report objects were not changed, the new insight was not added to `expenseReport`, and `appReport` was not created.
 
 ## Completed First JavaScript Plan
 

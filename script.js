@@ -457,6 +457,18 @@ console.log(currentExpenseLeader.expenseCategory + " is the largest expense cate
 const otherExpenseCategoriesTotal = calculateOtherCategoriesTotal(totalAmount, currentExpenseLeader);
 console.log("Other expense categories total excluding " + currentExpenseLeader.expenseCategory + ": " + otherExpenseCategoriesTotal);
 
+function getExpenseLeaderVsOtherCategoriesInsight(leaderStats, otherTotal) {
+    if (leaderStats.total > otherTotal) {
+        return leaderStats.expenseCategory + " total is higher than all other expense categories combined";
+    } else if (leaderStats.total === otherTotal) {
+        return leaderStats.expenseCategory + " total is equal to all other expense categories combined";
+    } else {
+        return leaderStats.expenseCategory + " total is lower than all other expense categories combined";
+    }
+}
+const expenseLeaderVsOtherCategoriesInsight = getExpenseLeaderVsOtherCategoriesInsight(currentExpenseLeader, otherExpenseCategoriesTotal);
+console.log(expenseLeaderVsOtherCategoriesInsight);
+
 const currentExpenseWeakest = findLowestPercentageStats(expenseStatsList);
 console.log(currentExpenseWeakest.expenseCategory + " is the smallest expense category with " + formatPercentage(currentExpenseWeakest.percentage));
 
