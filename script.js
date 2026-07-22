@@ -501,6 +501,7 @@ const expenseReport = {
     otherCategoriesTotal: otherExpenseCategoriesTotal,
     spread: expenseSpread,
     spreadLevel: expenseSpreadLevel,
-    spreadInsight: expenseSpreadInsight
+    spreadInsight: expenseSpreadInsight,
+    leaderVsOtherCategoriesInsight: expenseLeaderVsOtherCategoriesInsight
 };
 console.log(expenseReport);
