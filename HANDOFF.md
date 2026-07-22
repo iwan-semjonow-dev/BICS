@@ -807,6 +807,10 @@ GitHub is synchronized with `origin/main`.
 - `bicsReport`, `investChaosReport`, calculations, insight functions, and existing text output were not changed; no DOM, UI, forms, localStorage, React, backend, dashboard, charts, or `appReport` were added.
 - Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
 - The checkpoint was committed and pushed as `de4f20a refactor: add expense leader comparison insight to report`.
+- JavaScript `expenseReport` concentration flag checkpoint completed: the existing `spreadLevel: expenseSpreadLevel` remains, and `isHighlyConcentrated: expenseSpreadLevel === "high"` now adds a boolean flag without replacing the full spread level.
+- The flag is `true` only when the expense spread level is exactly `"high"`; `bicsReport`, `investChaosReport`, calculations, insight functions, and existing text output were not changed.
+- No DOM, UI, forms, localStorage, React, backend, dashboard, charts, or `appReport` were added. Verification passed: `node --check script.js`, `node script.js`, and `git diff --check`.
+- The checkpoint was committed and pushed as `ac8c6e8 refactor: add expense concentration flag to report`.
 
 ## Completed First JavaScript Plan
 
