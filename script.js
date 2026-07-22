@@ -501,6 +501,7 @@ const expenseReport = {
     otherCategoriesTotal: otherExpenseCategoriesTotal,
     spread: expenseSpread,
     spreadLevel: expenseSpreadLevel,
+    isHighlyConcentrated: expenseSpreadLevel === "high",
     spreadInsight: expenseSpreadInsight,
     leaderVsOtherCategoriesInsight: expenseLeaderVsOtherCategoriesInsight
 };
