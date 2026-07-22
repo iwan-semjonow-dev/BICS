@@ -49,9 +49,11 @@ A step is considered successful only when the user understands the idea, makes o
 
 ## Current Project State
 
-Active project folder: `D:\Codex\BICS-clean-test`
+Active project folder: `D:\Codex\BICS`
 
-The previous `D:\Codex\BICS-restart` folder had the interactive Codex helper error `helper_unknown_error: setup refresh had errors`; use the active clean-test folder for BICS work.
+Folder rename history:
+- `D:\Codex\BICS-restart` was deleted.
+- `D:\Codex\BICS-clean-test` was renamed to `D:\Codex\BICS`.
 
 Files:
 - `README.md` — filled
@@ -61,7 +63,6 @@ Files:
 - `styles.css` — filled
 - `script.js` — active JavaScript learning file in data-first and console-first mode
 
-Old project folder `d:\Codex\BICS` was not changed.
 GitHub is synchronized with `origin/main`.
 
 ## HTML Already Done
