@@ -3,6 +3,7 @@
     background-color: #061722;
     border: 1px solid #183040;
     border-radius: 12px;
+    flex: 1;
 }
 
 .balance h2 {
@@ -16,4 +17,12 @@
     margin: 8px 0 0;
     font-size: 28px;
     font-weight: 600;
+}
+
+.balance--income p {
+    color: #22c55e;
+}
+
+.balance--expense p {
+    color: #ef4444;
 }

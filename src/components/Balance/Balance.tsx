@@ -1,13 +1,15 @@
 import "./Balance.css"
 
 type BalanceProps = {
-    amount: number
+    amount: number,
+    title: string,
+    variant: "balance" | "income" | "expense",
 }
 
-function Balance({ amount }: BalanceProps) {
+function Balance({ amount, title, variant }: BalanceProps) {
     return (
-        <section className="balance">
-            <h2>Общий баланс</h2>
+        <section className={`balance balance--${variant}`}>
+            <h2>{title}</h2>
             <p>{amount} €</p>
         </section>
     )

@@ -4,3 +4,9 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.summary {
+  display: flex;
+  gap: 16px;
+  flex-direction: row;
+}
