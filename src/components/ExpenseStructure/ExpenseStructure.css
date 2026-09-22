@@ -1,0 +1,17 @@
+.expense-structure {
+    padding: 20px;
+    background-color: #061722;
+    border: 1px solid #183040;
+    border-radius: 12px;
+}
+
+.expense-structure h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.expense-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
