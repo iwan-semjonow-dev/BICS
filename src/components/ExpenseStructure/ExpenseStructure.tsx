@@ -1,12 +1,16 @@
 import "./ExpenseStructure.css"
 
-function ExpenseStructure() {
+type ExpenseSummary = {
+    id: number;
+    category: string;
+    amount: number;
+}
 
-    const expenses = [
-        { id: 1, category: "Транспорт", amount: 20 },
-        { id: 2, category: "Продукты", amount: 120 },
-        { id: 3, category: "Развлечения", amount: 40 }
-    ]
+type ExpenseStructureProps = {
+    expenses: ExpenseSummary[];
+}
+
+function ExpenseStructure({ expenses }: ExpenseStructureProps) {
 
     return (
         <section className="expense-structure">
