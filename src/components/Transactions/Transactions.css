@@ -1,0 +1,25 @@
+.transactions {
+    padding: 20px;
+    background-color: #061722;
+    border: 1px solid #183040;
+    border-radius: 12px;
+}
+
+.transactions h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.transaction-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.transaction-amount--income {
+    color: #22c55e;
+}
+
+.transaction-amount--expense {
+    color: #ef4444;
+}
