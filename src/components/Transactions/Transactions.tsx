@@ -18,7 +18,12 @@ function Transactions({ transactions }: TransactionsProps) {
             <h2>Транзакции</h2>
             {transactions.map((transaction) => (
                 <div className="transaction-row" key={transaction.id}>
-                    <span>{transaction.title}</span>
+                    <div className="transaction-info">
+                        <span>{transaction.title}</span>
+                        <span className="transaction-category">
+                            {transaction.category}
+                        </span>
+                    </div>
                     <span className={`transaction-amount--${transaction.type}`}>
                         {transaction.type === "income" ? "+" : "-"}
                         {transaction.amount} €
