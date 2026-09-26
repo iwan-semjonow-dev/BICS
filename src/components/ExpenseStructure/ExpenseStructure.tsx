@@ -1,6 +1,6 @@
 import "./ExpenseStructure.css"
 
-type ExpenseSummary = {
+export type ExpenseSummary = {
     id: number;
     category: string;
     amount: number;

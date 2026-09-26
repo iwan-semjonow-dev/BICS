@@ -4,19 +4,9 @@ import Balance from "./components/Balance/Balance";
 import ExpenseStructure from "./components/ExpenseStructure/ExpenseStructure";
 import Transactions from "./components/Transactions/Transactions";
 import type { Transaction } from "./components/Transactions/Transactions";
+import type { ExpenseSummary } from "./components/ExpenseStructure/ExpenseStructure";
 
 function App() {
-
-  const expenses = [
-    { id: 1, category: "Транспорт", amount: 30 },
-    { id: 2, category: "Продукты", amount: 120 },
-    { id: 3, category: "Развлечения", amount: 40 }
-  ]
-
-  const totalExpenses = expenses.reduce(
-    (total, expense) => total + expense.amount,
-    0
-  )
 
   const transactions: Transaction[] = [
     {
@@ -33,8 +23,45 @@ function App() {
       category: "Доход",
       amount: 2000,
       type: "income"
+    },
+
+    {
+      id: 3,
+      title: "Поездка на автобусе",
+      category: "Транспорт",
+      amount: 6,
+      type: "expense"
+    },
+
+    {
+      id: 4,
+      title: "Покупка продуктов",
+      category: "Продукты",
+      amount: 15,
+      type: "expense"
     }
   ]
+
+  const expenseTransactions = transactions.filter(
+    (transaction) => transaction.type === "expense"
+  )
+
+  const totalExpenses = expenseTransactions.reduce(
+    (total, expense) => total + expense.amount,
+    0
+  )
+
+  const expenseSummaries: ExpenseSummary[] = [];
+
+  for (const transaction of expenseTransactions) {
+    const existingSummary = expenseSummaries.find((summary) => summary.category === transaction.category);
+
+    if (existingSummary) {
+      existingSummary.amount += transaction.amount;
+    } else {
+      expenseSummaries.push({id: transaction.id, category: transaction.category, amount: transaction.amount})
+    }
+  }
 
   return (
     <div className="app">
@@ -44,7 +71,7 @@ function App() {
         <Balance amount={2000} title="Доходы" variant="income" />
         <Balance amount={totalExpenses} title="Расходы" variant="expense" />
       </div>
-      <ExpenseStructure expenses={expenses} />
+      <ExpenseStructure expenses={expenseSummaries} />
       <Transactions transactions={transactions} />
     </div>
   )
