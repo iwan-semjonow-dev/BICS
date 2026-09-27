@@ -39,7 +39,15 @@ function App() {
       category: "Продукты",
       amount: 15,
       type: "expense"
-    }
+    },
+
+    {
+      id: 5,
+      title: "Подработка",
+      category: "Доход",
+      amount: 150,
+      type: "income"
+    },
   ]
 
   const expenseTransactions = transactions.filter(
@@ -51,6 +59,15 @@ function App() {
     0
   )
 
+  const incomeTransactions = transactions.filter(
+    (transaction) => transaction.type === "income"
+  )
+
+  const totalIncome = incomeTransactions.reduce(
+    (total, income) => total + income.amount,
+    0
+  )
+
   const expenseSummaries: ExpenseSummary[] = [];
 
   for (const transaction of expenseTransactions) {
@@ -59,7 +76,7 @@ function App() {
     if (existingSummary) {
       existingSummary.amount += transaction.amount;
     } else {
-      expenseSummaries.push({id: transaction.id, category: transaction.category, amount: transaction.amount})
+      expenseSummaries.push({ id: transaction.id, category: transaction.category, amount: transaction.amount })
     }
   }
 
@@ -68,7 +85,7 @@ function App() {
       <Header />
       <div className="summary">
         <Balance amount={1200} title="Общий баланс" variant="balance" />
-        <Balance amount={2000} title="Доходы" variant="income" />
+        <Balance amount={totalIncome} title="Доходы" variant="income" />
         <Balance amount={totalExpenses} title="Расходы" variant="expense" />
       </div>
       <ExpenseStructure expenses={expenseSummaries} />
