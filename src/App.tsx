@@ -80,11 +80,13 @@ function App() {
     }
   }
 
+  const totalBalance = totalIncome - totalExpenses;
+
   return (
     <div className="app">
       <Header />
       <div className="summary">
-        <Balance amount={1200} title="Общий баланс" variant="balance" />
+        <Balance amount={totalBalance} title="Общий баланс" variant="balance" />
         <Balance amount={totalIncome} title="Доходы" variant="income" />
         <Balance amount={totalExpenses} title="Расходы" variant="expense" />
       </div>
