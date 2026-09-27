@@ -5,10 +5,11 @@ import ExpenseStructure from "./components/ExpenseStructure/ExpenseStructure";
 import Transactions from "./components/Transactions/Transactions";
 import type { Transaction } from "./components/Transactions/Transactions";
 import type { ExpenseSummary } from "./components/ExpenseStructure/ExpenseStructure";
+import { useState } from "react";
 
 function App() {
 
-  const transactions: Transaction[] = [
+  const [transactions, setTransactions] = useState<Transaction[]>([
     {
       id: 1,
       title: "Проезд на метро",
@@ -48,7 +49,7 @@ function App() {
       amount: 150,
       type: "income"
     },
-  ]
+  ]);
 
   const expenseTransactions = transactions.filter(
     (transaction) => transaction.type === "expense"
@@ -82,6 +83,18 @@ function App() {
 
   const totalBalance = totalIncome - totalExpenses;
 
+  function handleAddTransaction() {
+    const newTransaction: Transaction =
+      {
+      id: Math.max(0, ...transactions.map((transaction) => transaction.id)) + 1,
+      title: "Кофе",
+      category: "Кафе",
+      amount: 3,
+      type: "expense"
+    };
+    setTransactions([...transactions, newTransaction]);
+  }
+
   return (
     <div className="app">
       <Header />
@@ -91,6 +104,7 @@ function App() {
         <Balance amount={totalExpenses} title="Расходы" variant="expense" />
       </div>
       <ExpenseStructure expenses={expenseSummaries} />
+      <button onClick={handleAddTransaction}>Добавить кофе</button>
       <Transactions transactions={transactions} />
     </div>
   )
