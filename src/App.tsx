@@ -10,6 +10,7 @@ import { useState } from "react";
 function App() {
 
   const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState("");
 
   const [transactions, setTransactions] = useState<Transaction[]>([
     {
@@ -90,15 +91,26 @@ function App() {
       return;
     }
 
+    const numericAmount = Number(amount);
+
+    if (!Number.isFinite(numericAmount)) {
+      return;
+    }
+
+    if (numericAmount <= 0) {
+      return;
+    }
+
     const newTransaction: Transaction = {
       id: Math.max(0, ...transactions.map((transaction) => transaction.id)) + 1,
       title: title.trim(),
       category: "Кафе",
-      amount: 3,
+      amount: numericAmount,
       type: "expense"
     };
     setTransactions([...transactions, newTransaction]);
     setTitle("");
+    setAmount("");
   }
 
   return (
@@ -111,6 +123,7 @@ function App() {
       </div>
       <ExpenseStructure expenses={expenseSummaries} />
       <input type="text" placeholder="Название покупки" value={title} onChange={(event) => setTitle(event.target.value)} />
+      <input type="number" placeholder="Сумма" value={amount} onChange = {(event) => setAmount(event.target.value)} step="0.01" />
       <button onClick={handleAddTransaction}>Добавить покупку</button>
       <Transactions transactions={transactions} />
     </div>
