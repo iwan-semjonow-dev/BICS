@@ -9,6 +9,8 @@ import { useState } from "react";
 
 function App() {
 
+  const [title, setTitle] = useState("");
+
   const [transactions, setTransactions] = useState<Transaction[]>([
     {
       id: 1,
@@ -84,15 +86,19 @@ function App() {
   const totalBalance = totalIncome - totalExpenses;
 
   function handleAddTransaction() {
-    const newTransaction: Transaction =
-      {
+    if (title.trim() === "") {
+      return;
+    }
+
+    const newTransaction: Transaction = {
       id: Math.max(0, ...transactions.map((transaction) => transaction.id)) + 1,
-      title: "Кофе",
+      title: title.trim(),
       category: "Кафе",
       amount: 3,
       type: "expense"
     };
     setTransactions([...transactions, newTransaction]);
+    setTitle("");
   }
 
   return (
@@ -104,7 +110,8 @@ function App() {
         <Balance amount={totalExpenses} title="Расходы" variant="expense" />
       </div>
       <ExpenseStructure expenses={expenseSummaries} />
-      <button onClick={handleAddTransaction}>Добавить кофе</button>
+      <input type="text" placeholder="Название покупки" value={title} onChange={(event) => setTitle(event.target.value)} />
+      <button onClick={handleAddTransaction}>Добавить покупку</button>
       <Transactions transactions={transactions} />
     </div>
   )
