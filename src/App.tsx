@@ -11,6 +11,7 @@ function App() {
 
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
+  const [category, setCategory] = useState("");
 
   const [transactions, setTransactions] = useState<Transaction[]>([
     {
@@ -91,6 +92,10 @@ function App() {
       return;
     }
 
+    if (category.trim() === "") {
+      return;
+    }
+
     const numericAmount = Number(amount);
 
     if (!Number.isFinite(numericAmount)) {
@@ -104,13 +109,14 @@ function App() {
     const newTransaction: Transaction = {
       id: Math.max(0, ...transactions.map((transaction) => transaction.id)) + 1,
       title: title.trim(),
-      category: "Кафе",
+      category: category.trim(),
       amount: numericAmount,
       type: "expense"
     };
     setTransactions([...transactions, newTransaction]);
     setTitle("");
     setAmount("");
+    setCategory("");
   }
 
   return (
@@ -124,6 +130,7 @@ function App() {
       <ExpenseStructure expenses={expenseSummaries} />
       <input type="text" placeholder="Название покупки" value={title} onChange={(event) => setTitle(event.target.value)} />
       <input type="number" placeholder="Сумма" value={amount} onChange = {(event) => setAmount(event.target.value)} step="0.01" />
+      <input type="text" placeholder="Категория" value={category} onChange = {(event) => setCategory(event.target.value)} />
       <button onClick={handleAddTransaction}>Добавить покупку</button>
       <Transactions transactions={transactions} />
     </div>
