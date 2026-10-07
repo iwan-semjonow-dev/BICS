@@ -12,6 +12,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
+  const [type, setType] = useState<"expense" | "income">("expense");
 
   const [transactions, setTransactions] = useState<Transaction[]>([
     {
@@ -111,7 +112,7 @@ function App() {
       title: title.trim(),
       category: category.trim(),
       amount: numericAmount,
-      type: "expense"
+      type: type
     };
     setTransactions([...transactions, newTransaction]);
     setTitle("");
@@ -129,9 +130,22 @@ function App() {
       </div>
       <ExpenseStructure expenses={expenseSummaries} />
       <input type="text" placeholder="Название покупки" value={title} onChange={(event) => setTitle(event.target.value)} />
-      <input type="number" placeholder="Сумма" value={amount} onChange = {(event) => setAmount(event.target.value)} step="0.01" />
-      <input type="text" placeholder="Категория" value={category} onChange = {(event) => setCategory(event.target.value)} />
-      <button onClick={handleAddTransaction}>Добавить покупку</button>
+      <input type="number" placeholder="Сумма" value={amount} onChange={(event) => setAmount(event.target.value)} step="0.01" />
+      <input type="text" placeholder="Категория" value={category} onChange={(event) => setCategory(event.target.value)} />
+      <select
+        value={type}
+        onChange={(event) => {
+          const selectedType = event.target.value;
+
+          if (selectedType === "expense" || selectedType === "income") {
+            setType(selectedType);
+          }
+        }}
+      >
+        <option value="expense">Расход</option>
+        <option value="income">Доход</option>
+      </select>
+      <button onClick={handleAddTransaction}>Добавить транзакцию</button>
       <Transactions transactions={transactions} />
     </div>
   )
