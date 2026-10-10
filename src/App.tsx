@@ -13,6 +13,9 @@ function App() {
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
   const [type, setType] = useState<"expense" | "income">("expense");
+  const [titleError, setTitleError] = useState("");
+  const [categoryError, setCategoryError] = useState("");
+  const [amountError, setAmountError] = useState("");
 
   const [transactions, setTransactions] = useState<Transaction[]>([
     {
@@ -89,21 +92,33 @@ function App() {
   const totalBalance = totalIncome - totalExpenses;
 
   function handleAddTransaction() {
-    if (title.trim() === "") {
-      return;
-    }
-
-    if (category.trim() === "") {
-      return;
-    }
-
     const numericAmount = Number(amount);
 
-    if (!Number.isFinite(numericAmount)) {
-      return;
+    let nextTitleError = "";
+
+    if (title.trim() === "") {
+      nextTitleError = "Введите название транзакции";
     }
 
-    if (numericAmount <= 0) {
+    let nextCategoryError = "";
+    if (category.trim() === "") {
+      nextCategoryError = "Введите название категории";
+    }
+
+    let nextAmountError = "";
+    if (amount.trim() === "") {
+      nextAmountError = "Введите корректную сумму";
+    } else if (!Number.isFinite(numericAmount)) {
+      nextAmountError = "Введите корректную сумму"
+    } else if (numericAmount <= 0) {
+      nextAmountError = "Введите сумму больше нуля"
+    }
+
+    setTitleError(nextTitleError);
+    setCategoryError(nextCategoryError);
+    setAmountError(nextAmountError);
+
+    if (nextTitleError !== "" || nextCategoryError !== "" || nextAmountError !== "") {
       return;
     }
 
@@ -129,9 +144,40 @@ function App() {
         <Balance amount={totalExpenses} title="Расходы" variant="expense" />
       </div>
       <ExpenseStructure expenses={expenseSummaries} />
-      <input type="text" placeholder="Название покупки" value={title} onChange={(event) => setTitle(event.target.value)} />
-      <input type="number" placeholder="Сумма" value={amount} onChange={(event) => setAmount(event.target.value)} step="0.01" />
-      <input type="text" placeholder="Категория" value={category} onChange={(event) => setCategory(event.target.value)} />
+      <input
+        type="text"
+        placeholder="Название покупки"
+        value={title}
+        onChange={(event) => {
+          setTitle(event.target.value);
+          setTitleError("");
+        }}
+      />
+      {titleError && <p role="alert">{titleError}</p>}
+
+      <input
+        type="number"
+        placeholder="Сумма"
+        value={amount}
+        onChange={(event) => {
+          setAmount(event.target.value);
+          setAmountError("");
+        }}
+        step="0.01"
+      />
+      {amountError && <p role="alert">{amountError}</p>}
+
+      <input
+        type="text"
+        placeholder="Категория"
+        value={category}
+        onChange={(event) => {
+          setCategory(event.target.value);
+          setCategoryError("");
+        }}
+      />
+      {categoryError && <p role="alert">{categoryError}</p>}
+
       <select
         value={type}
         onChange={(event) => {
@@ -147,7 +193,7 @@ function App() {
       </select>
       <button onClick={handleAddTransaction}>Добавить транзакцию</button>
       <Transactions transactions={transactions} />
-    </div>
+    </div >
   )
 }
 
