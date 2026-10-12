@@ -3,9 +3,9 @@ import "./Transactions.css"
 export type Transaction = {
     id: number;
     title: string;
-    category: string;
+    category: "Basic" | "Invest" | "Chaos" | "Signal" | "";
     amount: number;
-    type: "income" | "expense"
+    type: "income" | "expense";
 }
 
 type TransactionsProps = {

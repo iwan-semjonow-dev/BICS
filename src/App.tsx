@@ -11,53 +11,14 @@ function App() {
 
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
-  const [type, setType] = useState<"expense" | "income">("expense");
+  const [category, setCategory] = useState<Transaction["category"]>("");
+  const [type, setType] = useState<Transaction["type"] | "">("");
   const [titleError, setTitleError] = useState("");
   const [categoryError, setCategoryError] = useState("");
   const [amountError, setAmountError] = useState("");
+  const [typeError, setTypeError] = useState("");
 
-  const [transactions, setTransactions] = useState<Transaction[]>([
-    {
-      id: 1,
-      title: "Проезд на метро",
-      category: "Транспорт",
-      amount: 4,
-      type: "expense"
-    },
-
-    {
-      id: 2,
-      title: "Зарплата",
-      category: "Доход",
-      amount: 2000,
-      type: "income"
-    },
-
-    {
-      id: 3,
-      title: "Поездка на автобусе",
-      category: "Транспорт",
-      amount: 6,
-      type: "expense"
-    },
-
-    {
-      id: 4,
-      title: "Покупка продуктов",
-      category: "Продукты",
-      amount: 15,
-      type: "expense"
-    },
-
-    {
-      id: 5,
-      title: "Подработка",
-      category: "Доход",
-      amount: 150,
-      type: "income"
-    },
-  ]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   const expenseTransactions = transactions.filter(
     (transaction) => transaction.type === "expense"
@@ -95,14 +56,13 @@ function App() {
     const numericAmount = Number(amount);
 
     let nextTitleError = "";
-
     if (title.trim() === "") {
       nextTitleError = "Введите название транзакции";
     }
 
     let nextCategoryError = "";
-    if (category.trim() === "") {
-      nextCategoryError = "Введите название категории";
+    if (type === "expense" && category === "") {
+      nextCategoryError = "Выберите зону BICS";
     }
 
     let nextAmountError = "";
@@ -114,18 +74,24 @@ function App() {
       nextAmountError = "Введите сумму больше нуля"
     }
 
+    let nextTypeError = "";
+    if (type === "") {
+      nextTypeError = "Выберите тип операции";
+    }
+
     setTitleError(nextTitleError);
     setCategoryError(nextCategoryError);
     setAmountError(nextAmountError);
+    setTypeError(nextTypeError)
 
-    if (nextTitleError !== "" || nextCategoryError !== "" || nextAmountError !== "") {
+    if (nextTitleError !== "" || nextCategoryError !== "" || nextAmountError !== "" || type === "") {
       return;
     }
 
     const newTransaction: Transaction = {
       id: Math.max(0, ...transactions.map((transaction) => transaction.id)) + 1,
       title: title.trim(),
-      category: category.trim(),
+      category: type === "expense" ? category : "",
       amount: numericAmount,
       type: type
     };
@@ -144,6 +110,7 @@ function App() {
         <Balance amount={totalExpenses} title="Расходы" variant="expense" />
       </div>
       <ExpenseStructure expenses={expenseSummaries} />
+
       <input
         type="text"
         placeholder="Название покупки"
@@ -154,6 +121,50 @@ function App() {
         }}
       />
       {titleError && <p role="alert">{titleError}</p>}
+
+      <select
+        value={type}
+        onChange={(event) => {
+          const selectedType = event.target.value;
+
+          if (selectedType === "" || selectedType === "expense" || selectedType === "income") {
+            setType(selectedType);
+            setTypeError("");
+          }
+          if (selectedType === "income") {
+            setCategory("");
+            setCategoryError("");
+          }
+        }}
+      >
+        <option value="">Выберите тип операции</option>
+        <option value="expense">Расход</option>
+        <option value="income">Доход</option>
+      </select>
+      {typeError && <p role="alert">{typeError}</p>}
+
+      {type === "expense" && (
+        <>
+          <select
+            value={category}
+            onChange={(event) => {
+              const selectedCategory = event.target.value;
+
+              if (selectedCategory === "" || selectedCategory === "Basic" || selectedCategory === "Invest" || selectedCategory === "Chaos" || selectedCategory === "Signal") {
+                setCategory(selectedCategory);
+                setCategoryError("");
+              }
+            }}
+          >
+            <option value="">Выберите зону BICS</option>
+            <option value="Basic">Basic</option>
+            <option value="Invest">Invest</option>
+            <option value="Chaos">Chaos</option>
+            <option value="Signal">Signal</option>
+          </select>
+          {categoryError && <p role="alert">{categoryError}</p>}
+        </>
+      )}
 
       <input
         type="number"
@@ -167,30 +178,6 @@ function App() {
       />
       {amountError && <p role="alert">{amountError}</p>}
 
-      <input
-        type="text"
-        placeholder="Категория"
-        value={category}
-        onChange={(event) => {
-          setCategory(event.target.value);
-          setCategoryError("");
-        }}
-      />
-      {categoryError && <p role="alert">{categoryError}</p>}
-
-      <select
-        value={type}
-        onChange={(event) => {
-          const selectedType = event.target.value;
-
-          if (selectedType === "expense" || selectedType === "income") {
-            setType(selectedType);
-          }
-        }}
-      >
-        <option value="expense">Расход</option>
-        <option value="income">Доход</option>
-      </select>
       <button onClick={handleAddTransaction}>Добавить транзакцию</button>
       <Transactions transactions={transactions} />
     </div >
