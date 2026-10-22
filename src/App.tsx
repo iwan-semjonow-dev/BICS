@@ -11,6 +11,8 @@ import type { TransactionFormData } from "./components/TransactionForm/Transacti
 
 function App() {
 
+  const [serverMessage, setServerMessage] = useState("");
+
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   const expenseTransactions = transactions.filter(
@@ -57,6 +59,12 @@ function App() {
     setTransactions([...transactions, newTransaction]);
   }
 
+async function checkServer() {
+  const response = await fetch("http://localhost:3000/")
+  const message = await response.text()
+  setServerMessage(message)
+}
+
   return (
     <div className="app">
       <Header />
@@ -70,6 +78,9 @@ function App() {
       <TransactionForm onAddTransaction={handleAddTransaction} />
 
       <Transactions transactions={transactions} />
+
+      <p>{serverMessage}</p>
+      <button onClick= { checkServer }> Проверить сервер </button>
     </div >
   )
 }
