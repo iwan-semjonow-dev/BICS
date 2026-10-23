@@ -59,11 +59,18 @@ function App() {
     setTransactions([...transactions, newTransaction]);
   }
 
-async function checkServer() {
-  const response = await fetch("http://localhost:3000/")
-  const message = await response.text()
-  setServerMessage(message)
-}
+  async function checkServer() {
+    setServerMessage("Проверяем соединение...")
+    try {
+      const response = await fetch("http://localhost:3000/")
+      if (!response.ok) {
+        throw new Error("Сервер вернул ошибку")
+      }
+      const message = await response.text()
+      setServerMessage(message)
+    }
+    catch { setServerMessage("Не удалось проверить сервер") }
+  }
 
   return (
     <div className="app">
@@ -80,7 +87,7 @@ async function checkServer() {
       <Transactions transactions={transactions} />
 
       <p>{serverMessage}</p>
-      <button onClick= { checkServer }> Проверить сервер </button>
+      <button onClick={checkServer}> Проверить сервер </button>
     </div >
   )
 }
