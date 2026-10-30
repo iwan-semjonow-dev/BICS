@@ -31,7 +31,6 @@ function Transactions({ transactions }: TransactionsProps) {
                 </div>
             ))}
         </section>
-        
     )
 }
 
