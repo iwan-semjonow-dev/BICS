@@ -1,10 +1,30 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { randomUUID } from 'node:crypto';
+import { Pool } from 'pg';
+
+type TransactionRow = {
+  id: number;
+  title: string;
+  amount_cents: number;
+  type: 'income' | 'expense';
+  operation_date: string;
+  zone: 'Basic' | 'Invest' | 'Chaos' | 'Signal' | null;
+};
 
 @Injectable()
 export class AppService {
+  private readonly pool = new Pool();
   getHello(): string {
     return 'Сервер BICS работает';
+  }
+
+  async getTransactions() {
+    const result = await this.pool.query<TransactionRow>(`
+    SELECT id, title, amount_cents, type, operation_date::text AS operation_date, zone
+    FROM transactions
+    ORDER BY id;
+  `);
+    return result.rows;
   }
 
   createTransaction(data: unknown) {

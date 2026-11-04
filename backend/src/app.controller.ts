@@ -10,6 +10,11 @@ export class AppController {
     return this.appService.getHello();
   }
 
+  @Get('transactions')
+  getTransactions() {
+    return this.appService.getTransactions();
+  }
+
   @Post('transactions')
   createTransactions(@Body() data: unknown) {
     return this.appService.createTransaction(data);
