@@ -1,5 +1,4 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
-import { randomUUID } from 'node:crypto';
 import { Pool } from 'pg';
 
 type TransactionRow = {
@@ -27,7 +26,7 @@ export class AppService {
     return result.rows;
   }
 
-  createTransaction(data: unknown) {
+  async createTransaction(data: unknown) {
     if (data === null || typeof data !== 'object' || Array.isArray(data)) {
       throw new BadRequestException('Передайте данные транзакции объектом');
     }
@@ -41,12 +40,20 @@ export class AppService {
     }
 
     if (
-      !('amount' in data) ||
-      typeof data.amount !== 'number' ||
-      !Number.isFinite(data.amount) ||
-      data.amount <= 0
+      !('amount_cents' in data) ||
+      typeof data.amount_cents !== 'number' ||
+      !Number.isInteger(data.amount_cents) ||
+      data.amount_cents <= 0
     ) {
-      throw new BadRequestException('Сумма должна быть числом больше нуля');
+      throw new BadRequestException(
+        'Сумма должна быть положительным целым числом центов',
+      );
+    }
+
+    if (data.amount_cents > 2147483647) {
+      throw new BadRequestException(
+        'Сумма не должна превышать 2147483647 центов',
+      );
     }
 
     if (
@@ -56,30 +63,50 @@ export class AppService {
       throw new BadRequestException('Выберите допустимый тип операции');
     }
 
-    if (!('category' in data) || typeof data.category !== 'string') {
-      throw new BadRequestException('Поле category должно быть строкой');
+    if (
+      !('zone' in data) ||
+      (typeof data.zone !== 'string' && data.zone !== null)
+    ) {
+      throw new BadRequestException('Поле zone должно быть строкой или null');
     }
 
     if (
       data.type === 'expense' &&
-      !['Basic', 'Invest', 'Chaos', 'Signal'].includes(data.category)
+      (data.zone === null ||
+        !['Basic', 'Invest', 'Chaos', 'Signal'].includes(data.zone))
     ) {
       throw new BadRequestException('Выберите доступную зону BICS');
     }
 
-    if (data.type === 'income' && data.category !== '') {
+    if (data.type === 'income' && data.zone !== null) {
       throw new BadRequestException('У дохода не должно быть зоны BICS');
     }
 
-    const transaction = {
-      title: data.title.trim(),
-      amount: data.amount,
-      type: data.type,
-      category: data.category,
-      createdAt: new Date().toISOString(),
-      id: randomUUID(),
-    };
+    const dateParts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'Europe/Berlin',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).formatToParts(new Date());
 
-    return transaction;
+    const year = dateParts.find((part) => part.type === 'year')!.value;
+    const month = dateParts.find((part) => part.type === 'month')!.value;
+    const day = dateParts.find((part) => part.type === 'day')!.value;
+
+    const operationDate = `${year}-${month}-${day}`;
+
+    const result = await this.pool.query<TransactionRow>(
+      `INSERT INTO transactions (title, amount_cents, type, zone, operation_date)
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING id, title, amount_cents, type, zone, operation_date::text AS operation_date`,
+      [
+        data.title.trim(),
+        data.amount_cents,
+        data.type,
+        data.zone,
+        operationDate,
+      ],
+    );
+    return result.rows[0];
   }
 }
