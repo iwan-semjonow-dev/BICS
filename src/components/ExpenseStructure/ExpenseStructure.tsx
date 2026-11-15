@@ -2,8 +2,8 @@ import "./ExpenseStructure.css"
 
 export type ExpenseSummary = {
     id: number;
-    category: string;
-    amount: number;
+    zone: string;
+    amount_cents: number;
 }
 
 type ExpenseStructureProps = {
@@ -20,8 +20,8 @@ function ExpenseStructure({ expenses }: ExpenseStructureProps) {
             )}
             {expenses.map((expense) => (
                 <div className="expense-row" key={expense.id}>
-                    <span>{expense.category}</span>
-                    <span>{expense.amount} €</span>
+                    <span>{expense.zone}</span>
+                    <span>{(expense.amount_cents/100).toLocaleString("ru-RU", {minimumFractionDigits:2, maximumFractionDigits: 2})} €</span>
                 </div>
             ))}
         </section>

@@ -3,9 +3,10 @@ import "./Transactions.css"
 export type Transaction = {
     id: number;
     title: string;
-    category: "Basic" | "Invest" | "Chaos" | "Signal" | "";
-    amount: number;
+    zone: "Basic" | "Invest" | "Chaos" | "Signal" | null;
+    amount_cents: number;
     type: "income" | "expense";
+    operation_date: string;
 }
 
 type TransactionsProps = {
@@ -21,12 +22,12 @@ function Transactions({ transactions }: TransactionsProps) {
                     <div className="transaction-info">
                         <span>{transaction.title}</span>
                         <span className="transaction-category">
-                            {transaction.category}
+                            {transaction.zone}
                         </span>
                     </div>
                     <span className={`transaction-amount--${transaction.type}`}>
                         {transaction.type === "income" ? "+" : "-"}
-                        {transaction.amount} €
+                        {(transaction.amount_cents/100).toLocaleString("ru-RU", {minimumFractionDigits: 2, maximumFractionDigits: 2})} €
                     </span>
                 </div>
             ))}

@@ -7,10 +7,15 @@ type BalanceProps = {
 }
 
 function Balance({ amount, title, variant }: BalanceProps) {
+
+const amountInEuros = amount/100;
+
+const formattedAmount = amountInEuros.toLocaleString("ru-RU", {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
     return (
         <section className={`balance balance--${variant}`}>
             <h2>{title}</h2>
-            <p>{amount} €</p>
+            <p>{formattedAmount} €</p>
         </section>
     )
 }

@@ -20,7 +20,7 @@ function App() {
   )
 
   const totalExpenses = expenseTransactions.reduce(
-    (total, expense) => total + expense.amount,
+    (total, expense) => total + expense.amount_cents,
     0
   )
 
@@ -29,34 +29,40 @@ function App() {
   )
 
   const totalIncome = incomeTransactions.reduce(
-    (total, income) => total + income.amount,
+    (total, income) => total + income.amount_cents,
     0
   )
 
   const expenseSummaries: ExpenseSummary[] = [];
 
   for (const transaction of expenseTransactions) {
-    const existingSummary = expenseSummaries.find((summary) => summary.category === transaction.category);
+
+    if (transaction.zone === null) {
+      continue;
+    }
+    
+    const existingSummary = expenseSummaries.find((summary) => summary.zone === transaction.zone);
 
     if (existingSummary) {
-      existingSummary.amount += transaction.amount;
+      existingSummary.amount_cents += transaction.amount_cents;
     } else {
-      expenseSummaries.push({ id: transaction.id, category: transaction.category, amount: transaction.amount })
+      expenseSummaries.push({ id: transaction.id, zone: transaction.zone, amount_cents: transaction.amount_cents })
     }
   }
 
   const totalBalance = totalIncome - totalExpenses;
 
-  function handleAddTransaction(data: TransactionFormData) {
+  async function handleAddTransaction(data: TransactionFormData) {
 
-    const newTransaction: Transaction = {
-      id: Math.max(0, ...transactions.map((transaction) => transaction.id)) + 1,
-      title: data.title,
-      category: data.category,
-      amount: data.amount,
-      type: data.type
-    };
-    setTransactions([...transactions, newTransaction]);
+    const response = await fetch( "http://localhost:3000/transactions", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)}  ) 
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message);
+    }
+
+    const savedTransaction = await response.json();
+
+    setTransactions((previousTransactions) => [...previousTransactions, savedTransaction]);
   }
 
   async function checkServer() {

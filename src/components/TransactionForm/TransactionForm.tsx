@@ -1,24 +1,36 @@
 import { useState } from "react";
 import type { Transaction } from "../Transactions/Transactions";
 
-export type TransactionFormData = Omit<Transaction, "id">;
+export type TransactionFormData = Omit<Transaction, "id" | "operation_date">;
 
 type TransactionFormProps = {
-    onAddTransaction: (data: TransactionFormData) => void;
+    onAddTransaction: (data: TransactionFormData) => Promise<void>;
 };
 
 function TransactionForm({ onAddTransaction }: TransactionFormProps) {
 
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
-    const [category, setCategory] = useState<Transaction["category"]>("");
+    const [category, setCategory] = useState<Exclude<Transaction["zone"], null> | "">("");
     const [type, setType] = useState<Transaction["type"] | "">("");
     const [titleError, setTitleError] = useState("");
     const [categoryError, setCategoryError] = useState("");
     const [amountError, setAmountError] = useState("");
     const [typeError, setTypeError] = useState("");
+    const [submitError, setSubmitError] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    function handleAddTransaction() {
+    async function handleAddTransaction() {
+        const amountParts = amount.split(".");
+
+        const fractionPart = amountParts[1] ?? "";
+
+        const centsPart = fractionPart.padEnd(2, "0");
+
+        const amountCents = Number(amountParts[0]) * 100 + Number(centsPart);
+
+        const isAmountFormatValid = /^\d+(\.\d{1,2})?$/.test(amount);
+
         const numericAmount = Number(amount);
 
         let nextTitleError = "";
@@ -36,8 +48,14 @@ function TransactionForm({ onAddTransaction }: TransactionFormProps) {
             nextAmountError = "Введите корректную сумму";
         } else if (!Number.isFinite(numericAmount)) {
             nextAmountError = "Введите корректную сумму"
+        } else if (fractionPart.length > 2) {
+            nextAmountError = "Введите сумму с точностью до двух знаков после точки"
         } else if (numericAmount <= 0) {
             nextAmountError = "Введите сумму больше нуля"
+        } else if (!isAmountFormatValid) {
+            nextAmountError = "Введите сумму цифрами, например 25.50"
+        } else if (amountCents > 2147483647) {
+            nextAmountError = "Сумма не должна превышать 21474836.47 €"
         }
 
         let nextTypeError = "";
@@ -54,17 +72,37 @@ function TransactionForm({ onAddTransaction }: TransactionFormProps) {
             return;
         }
 
-        onAddTransaction({
-            title: title.trim(),
-            amount: numericAmount,
-            category: type === "expense" ? category : "",
-            type: type
-        });
-        setTitle("");
-        setAmount("");
-        setCategory("")
+        if (category === "" && type !== "income") {
+            return;
+        }
+
+        setSubmitError("");
+
+        setIsSubmitting(true);
+
+        try {
+            await onAddTransaction({
+                title: title.trim(),
+                amount_cents: amountCents,
+                zone: type === "expense" && category !== "" ? category : null,
+                type: type
+            });
+            setTitle("");
+            setAmount("");
+            setCategory("")
+        } catch (error) {
+            if (error instanceof Error) {
+                setSubmitError(error.message);
+            } else {
+                setSubmitError("Не удалось сохранить транзакцию");
+            }
+        }
+
+        finally {
+            setIsSubmitting(false);
+        }
     }
-    
+
     return (<>
         <input
             type="text"
@@ -132,8 +170,9 @@ function TransactionForm({ onAddTransaction }: TransactionFormProps) {
             step="0.01"
         />
         {amountError && <p role="alert">{amountError}</p>}
+        {submitError && <p role="alert">{submitError}</p>}
 
-        <button onClick={handleAddTransaction}>Добавить транзакцию</button>
+        <button onClick={handleAddTransaction} disabled={isSubmitting}>Добавить транзакцию</button>
     </>)
 }
 
