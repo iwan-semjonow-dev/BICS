@@ -5,7 +5,7 @@ import ExpenseStructure from "./components/ExpenseStructure/ExpenseStructure";
 import Transactions from "./components/Transactions/Transactions";
 import type { Transaction } from "./components/Transactions/Transactions";
 import type { ExpenseSummary } from "./components/ExpenseStructure/ExpenseStructure";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TransactionForm from "./components/TransactionForm/TransactionForm";
 import type { TransactionFormData } from "./components/TransactionForm/TransactionForm";
 
@@ -14,6 +14,10 @@ function App() {
   const [serverMessage, setServerMessage] = useState("");
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+  const [loadError, setLoadError] = useState("");
+
+  const [isLoadingTransactions, setIsLoadingTransactions] = useState(true);
 
   const expenseTransactions = transactions.filter(
     (transaction) => transaction.type === "expense"
@@ -40,7 +44,7 @@ function App() {
     if (transaction.zone === null) {
       continue;
     }
-    
+
     const existingSummary = expenseSummaries.find((summary) => summary.zone === transaction.zone);
 
     if (existingSummary) {
@@ -54,7 +58,7 @@ function App() {
 
   async function handleAddTransaction(data: TransactionFormData) {
 
-    const response = await fetch( "http://localhost:3000/transactions", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(data)}  ) 
+    const response = await fetch("http://localhost:3000/transactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) })
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(errorData.message);
@@ -78,6 +82,26 @@ function App() {
     catch { setServerMessage("Не удалось проверить сервер") }
   }
 
+useEffect(() => {
+  async function loadTransactions() {
+    try {
+      const response = await fetch("http://localhost:3000/transactions");
+      if (!response.ok) {
+        throw new Error("Не удалось загрузить транзакции");
+      }
+      const loadedTransactions = await response.json();
+      setTransactions(loadedTransactions);
+    }
+    catch { setLoadError("Не удалось загрузить транзакции") }
+
+    finally {
+      setIsLoadingTransactions(false);
+    }
+  }
+
+    loadTransactions();
+  }, []);
+
   return (
     <div className="app">
       <Header />
@@ -89,6 +113,10 @@ function App() {
       <ExpenseStructure expenses={expenseSummaries} />
 
       <TransactionForm onAddTransaction={handleAddTransaction} />
+
+      {isLoadingTransactions && <p role="status">Загружаем транзакции...</p>}
+
+      {loadError && <p role="alert">{loadError}</p>}
 
       <Transactions transactions={transactions} />
 
